@@ -1,0 +1,124 @@
+/*
+@Description:新版公共导航 && 公共底
+@author: zhuzp
+@update: 2015-11-28
+*/
+/* reset */
+body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr {margin:0;padding:0;}
+body {font:12px/1.5 Arial,"Microsoft YaHei"; color:#333}
+select,input,button {vertical-align:middle;font-size:100%;}
+ul,ol {list-style:none;}
+fieldset,img {border:0;}
+em {font-style:normal;}
+.clearfix:after {content:"."; display: block; visibility: hidden; clear: both; height:0; font-size:0}
+.clearfix {*zoom:1}
+
+.site-nav-wrapper .truckhome a,.site-nav-2015 .new i,.site-nav-2015 dd .more,.site-nav-2015 .site-nav-news,.site-nav-2015 .site-nav-detail,.site-nav-2015 .site-nav-other,.truckhome-footer-2015 .iphone,.truckhome-footer-2015 .android,.category-nav .more i{ background: url(http://static-test.360che.com/cms/images/global/sitenav-icons.png) no-repeat;}
+
+.top-bar{height:30px; line-height: 30px;color:#999; background: #41454b}
+.top-bar .login .bubble-more-links{left: 10px;top: 30px;}
+.top-bar .login .bubble-more-links a{color: #6c6c6c !important;text-align: center;margin: 0;}
+.top-bar .login .bubble-more-links a:hover{color:#226ad2 !important; background: #f3f3f3; text-decoration: none;}
+.top-bar .top-bar-inner{margin:0 auto;width: 1000px;}
+.top-bar .top-bar-sign{position: relative;float: right;z-index: 1;*zoom:1;}
+.top-bar .top-bar-sign a,.top-bar .top-bar-sign a:visited{margin:0 5px;color:#999; text-decoration: none}
+.top-bar .top-bar-sign a:hover{ text-decoration: underline;color:#fff;}
+.top-bar .top-bar-sign .site-map{margin-left: 5px; cursor: pointer;}
+
+.top-bar .notice{margin-right: 15px;}
+.top-bar .phone,.top-bar .wechat{color: #999;padding: 0 15px;text-decoration: none;}
+.top-bar a.phone:hover,.top-bar a.wechat:hover{color: #fff;text-decoration: underline;}
+
+.site-map-content{ cursor: default; position:absolute;right:0;top:30px;padding-top:5px;width:272px;border:solid #1d1d1d;border-width: 0 1px 3px;z-index: 1;display: none;background: #fff}
+.top-bar .site-map-content dl{padding:10px 25px 8px; width: 222px; overflow: hidden; border-bottom: 1px solid #e9e9e9}
+.top-bar .site-map-content dt{ color:#999; line-height: 22px;}
+.top-bar .site-map-content dd{margin-left: -18px; width: 260px; line-height: 26px;color:#e9e9e9;}
+.top-bar .site-map-content a,.top-bar .site-map-content a:visited{margin:0 18px; width: 48px;color:#333; display: inline-block; vertical-align: top; *vertical-align: baseline; white-space:nowrap;}
+.top-bar .site-map-content a:hover{ color:#d60000; text-decoration: underline;}
+.site-map-more{padding:0 5px;height: 42px; line-height: 42px; text-align: right}
+.site-map-more a{ *font-family: "Simsun"}
+.site-map .map:hover{ color: #fff;}
+
+.site-nav-wrapper{margin:10px auto;position: relative;padding-left:160px;width:840px;height:60px; background: #2459a6;*zoom:1;}
+.site-nav-wrapper .truckhome{position: absolute;left: 0;top:0; width: 160px; height: 60px; text-indent: -160px; overflow: hidden; background: #f2f2f2}
+.site-nav-wrapper .truckhome a{margin:10px auto 0;width: 110px; height: 40px; display: block;background-position:0 -113px }
+.site-nav-2015 dl{ float: left;}
+.site-nav-2015 dt{position: absolute;left:0;top:0; height: 60px; line-height: 60px; text-align: center;}
+.site-nav-2015 a{ color:#fff; text-decoration: none;}
+.site-nav-2015 a:hover{ text-decoration: underline;color:#fff;}
+.site-nav-2015 dt a{font-size: 14px;}
+.site-nav-2015 dd {padding-top: 7px; font-size:0;*letter-spacing: -1px; line-height: 22px; height: 53px;}
+.site-nav-2015 dd span{ display: inline-block; vertical-align: top; *vertical-align: baseline; font-size: 12px;}
+
+.site-nav-2015 .site-nav-news,.site-nav-2015 .site-nav-detail,.site-nav-2015 .site-nav-other{position: relative; padding-right: 2px;background-position: 100% 0;*zoom:1;}
+.site-nav-2015 .site-nav-news{padding-left: 79px;}
+.site-nav-2015 .site-nav-news dt{width: 79px;}
+.site-nav-2015 .site-nav-news dd{width: 100px;}
+.site-nav-2015 .site-nav-news dd span{width: 50px;}
+.site-nav-2015 .site-nav-news .more{ background-position: -127px -69px;padding-right: 15px;}
+
+.site-nav-2015 .site-nav-detail{padding-left:95px;}
+.site-nav-2015 .site-nav-detail dt{width:95px;}
+.site-nav-2015 .site-nav-detail .more{ background-position: -103px -69px;padding-right: 15px;}
+.site-nav-2015 .site-nav-bbs{padding-left:80px;position: relative;}
+.site-nav-2015 .site-nav-bbs dt{ width: 30px;height: 50px;line-height: 18px;left: 24px;top: 10px;}
+.site-nav-2015 .site-nav-detail dd,.site-nav-2015 .site-nav-bbs dd,.site-nav-2015 .site-nav-other dd{width: 150px;}
+.site-nav-2015 .site-nav-detail dt a,.site-nav-2015 .site-nav-bbs dt a,.site-nav-2015 .site-nav-other dt a,.site-nav-2015 .site-nav-detail dd span,.site-nav-2015 .site-nav-bbs dd span,.site-nav-2015 .site-nav-other dd span{width:75px;}
+.site-nav-2015 .new,.site-nav-2015 .new:hover{position: relative;color:#9fb8dd;*zoom:1;}
+.site-nav-2015 .new i{position: absolute;right: -27px;top: -19px;width: 44px; height: 19px;text-indent: -64px;display: none;overflow: hidden; background-position:0 -158px;}
+.site-nav-2015 .new:hover{text-decoration: none;}
+.site-nav-2015 .new:hover i{display: block;animation: bubble-animation .5s ease-out forwards;}
+.site-nav-2015 .site-nav-other{padding-left: 27px;}
+.site-nav-2015 a.dealer{color: #f60;}
+.site-nav-2015 a.dealer:hover{text-decoration: underline;}
+
+.category-nav{margin:10px auto 0;width: 1000px; height: 64px; background: #f9f9f9}
+.category-nav a,.category-nav span,.category-nav a:visited,.category-nav .category-minicar .title,.category-nav .category-special .title,.category-nav .category-special .title{padding-top:40px;float: left; width: 99px; height: 24px; line-height: 24px; text-align: center; color:#303030; text-decoration: none; border-right:1px solid #f2f2f3; background: url(http://static-test.360che.com/cms/images/global/subcategory-icons.png) no-repeat;}
+.category-nav a:hover,.category-nav .more .title:hover{background-color: #ececec;color:#333; text-decoration: none}
+.category-nav span{padding-top: 0;height: 64px;background: none;position: relative;left: 0;top: 0;}
+.category-nav .more .title{padding-top: 40px;}
+.category-nav .more i{position: absolute;left: 63px;top: 50px;width: 10px;height: 10px;background-position: -153px -196px;}
+.category-nav .category-special i{left: 69px;}
+
+.category-nav .category-light{ background-position: 0 0}
+.category-nav .category-dumper{background-position: -99px 0}
+.category-nav .category-cargo{background-position: -198px 0}
+.category-nav .category-tractor{border-left:1px solid #f9f9f9;background-position: -297px 0}
+.category-nav .category-mixer{background-position: -396px 0}
+.category-nav .category-trailer{background-position: -495px 0}
+.category-nav .category-minicar .title{background-position: -594px 0}
+.category-nav .category-minicar:hover{border-color:#ececec;}
+.category-nav .category-special .title{background-position: -693px 0}
+.category-nav .category-pickup{background-position: -792px 0}
+.category-nav .category-parts{border-right:0 none;}
+.category-nav .category-parts .title{background-position: -891px 0;}
+
+.bubble-more-links{ position: absolute;left:0;top:63px; border:1px solid #cdd5e2; display: none; background: #fff}
+.bubble-more-links a{padding:0 12px; height: 25px; line-height: 25px; color:#6c6c6c; display: block; text-decoration: none;  width: auto;float:none;background: none;border: 0;}
+.bubble-more-links a:hover{color:#226ad2; background: #f3f3f3; text-decoration: none;}
+.category-nav .bubble-more-links{width: 98px;}
+.category-special .bubble-more-links{width: 180px;left:-82px;}
+.category-special .bubble-more-links a{float: left;}
+
+#site-map-content.visible,#sitenav-bubble.visible,.bubble-more-links.visible{ display: block;animation: bubble-animation .5s ease-out forwards;}
+@keyframes bubble-animation{
+	0%{opacity: 0;}
+	100%{opacity:1;}
+}
+
+/* 友情链接 */
+.truckhome-firendlink-2015{margin:10px auto;width: 1000px;overflow: hidden;}
+.truckhome-firendlink-2015 h2{font-size: 18px;height: 43px; line-height: 43px;border-bottom: solid 1px #e9e9e9;}
+.truckhome-firendlink-content{margin:0 -6px;padding:10px 0;line-height: 26px; color:#ccc;}
+.truckhome-firendlink-content a,.truckhome-firendlink-content a:visited{margin:0 6px;color:#0f5489; text-decoration: none; display: inline-block; vertical-align: top; *vertical-align: baseline;}
+.truckhome-firendlink-content a:hover{color: #d60000;text-decoration: underline;}
+.truckhome-firendlink-content .more{ color:#999; *font-family: Simsun}
+
+/* 公共底部 */
+.truckhome-footer-2015{margin:10px auto;padding:10px 0;width: 1000px;border-top:3px solid #0f5489;}
+.truckhome-footer-2015 p{line-height: 24px; text-align: center;color:#999;}
+.truckhome-footer-2015 a,.truckhome-footer-2015 a:visited{margin:0 10px;color:#999; text-decoration: none;display: inline-block; vertical-align: top; *vertical-align: baseline;}
+.truckhome-footer-2015 a:hover{color: #d60000;text-decoration: underline;}
+.truckhome-footer-2015 .iphone,.truckhome-footer-2015 .android{padding-left: 20px;}
+.truckhome-footer-2015 .iphone{background-position: -147px -110px}
+.truckhome-footer-2015 .android{background-position: -146px -140px}

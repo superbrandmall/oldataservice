@@ -1,0 +1,12 @@
+/* PC端主要分享 */
+.share-tools-360che{position: fixed;left:50%;top:30%;margin-left:-545px;width:24px;}
+.share-tools-360che a,.share-tools-360che span{margin-top:10px;width: 24px;height: 24px;text-indent: -48px;cursor:pointer; overflow: hidden; display: block; background: url(../images/share-tools-360che.png) no-repeat}
+.share-tools-360che .weibo{background-position:0 0}
+.share-tools-360che .qzone{background-position:0 -25px}
+.share-tools-360che .wechat{background-position:0 -50px}
+#page_qrcode{position: absolute;left:25px;top:78px;width:100px;height:100px;display: none;background: #fff}
+#page_qrcode.visible{display: block;animation: qrcode-animation .3s ease-out forwards;}
+@keyframes qrcode-animation{
+	0%{opacity: 0;transform:translate3d(-50px,0,0);}
+	100%{opacity: 1;transform:translate3d(0,0,0);}	
+}
