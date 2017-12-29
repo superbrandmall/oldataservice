@@ -49,6 +49,7 @@ public class Test {
 		String str = JSON.toJSONString(arr);
 		System.out.println(str);
 		System.out.println(1);
+		System.out.println(1);
 		System.out.println(JSON.parseArray(str));
 		//System.out.println(JSON.parseObject(str));
 	}
