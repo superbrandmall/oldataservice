@@ -148,7 +148,7 @@ public class Test {
 		System.out.println("tmp : " + tmp);
 
 		String key = Base64.getEncoder().encodeToString(tmp.getBytes());
-		System.out.println("key : " + key);
+		System.out.println("key : " + key );
 
 		String tmp1 = new String(Base64.getDecoder().decode(key));
 		System.out.println("tmp1 : " + tmp1);
