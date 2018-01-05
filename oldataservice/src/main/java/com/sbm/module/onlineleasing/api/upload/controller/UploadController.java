@@ -20,7 +20,7 @@ import com.sbm.module.onlineleasing.api.upload.domain.Upload;
 // * modified by 更新者 更新日 修改内容
 // ***************************************************************************/
 @Frequency
-@Authorization
+//@Authorization
 @Controller
 @RequestMapping("/ol/api/upload")
 public class UploadController extends BaseController {
