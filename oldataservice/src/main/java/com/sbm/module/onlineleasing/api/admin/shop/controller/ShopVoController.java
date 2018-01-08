@@ -1,6 +1,7 @@
-package com.sbm.module.onlineleasing.api.shop.controller;
+package com.sbm.module.onlineleasing.api.admin.shop.controller;
 
-import com.sbm.module.onlineleasing.api.shop.domain.ShopVo;
+import com.sbm.module.onlineleasing.api.admin.shop.biz.IShopVoService;
+import com.sbm.module.onlineleasing.api.admin.shop.domain.ShopVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sbm.module.common.api.jsonwebtoken.annotation.Authorization;
 import com.sbm.module.common.base.controller.BaseController;
 import com.sbm.module.common.base.domain.JsonContainer;
-import com.sbm.module.onlineleasing.api.shop.biz.IShopVoService;
 import com.sbm.module.onlineleasing.base.user.constant.UserConstant;
 
 /*****************************************************************************/

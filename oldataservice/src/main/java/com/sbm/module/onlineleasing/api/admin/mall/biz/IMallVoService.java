@@ -1,9 +1,6 @@
-package com.sbm.module.onlineleasing.api.mall.biz;
+package com.sbm.module.onlineleasing.api.admin.mall.biz;
 
-import com.sbm.module.common.business.domain.Pagination;
-import com.sbm.module.onlineleasing.api.mall.domain.MallVo;
-import com.sbm.module.onlineleasing.base.mall.domain.TOLMall;
-import com.sbm.module.onlineleasing.base.merchant.domain.TOLMerchant;
+import com.sbm.module.onlineleasing.api.admin.mall.domain.MallVo;
 
 /*****************************************************************************/
 

@@ -1,4 +1,4 @@
-package com.sbm.module.onlineleasing.api.shop.domain;
+package com.sbm.module.onlineleasing.api.admin.shop.domain;
 
 import com.sbm.module.common.business.domain.BaseEntity;
 import com.sbm.module.common.business.domain.Pagination;

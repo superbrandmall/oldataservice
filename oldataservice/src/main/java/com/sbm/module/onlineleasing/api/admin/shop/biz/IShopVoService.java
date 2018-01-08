@@ -1,8 +1,6 @@
-package com.sbm.module.onlineleasing.api.shop.biz;
+package com.sbm.module.onlineleasing.api.admin.shop.biz;
 
-import com.sbm.module.common.business.domain.Pagination;
-import com.sbm.module.onlineleasing.api.shop.domain.ShopVo;
-import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
+import com.sbm.module.onlineleasing.api.admin.shop.domain.ShopVo;
 
 /*****************************************************************************/
 /**

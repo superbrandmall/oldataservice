@@ -1,7 +1,7 @@
-package com.sbm.module.onlineleasing.api.shop.biz.impl;
+package com.sbm.module.onlineleasing.api.admin.shop.biz.impl;
 
 import com.sbm.module.common.business.util.ParamsUtil;
-import com.sbm.module.onlineleasing.api.shop.domain.ShopVo;
+import com.sbm.module.onlineleasing.api.admin.shop.domain.ShopVo;
 import com.sbm.module.onlineleasing.base.shopcoords.biz.ITOLShopCoordsService;
 import com.sbm.module.onlineleasing.base.shopimages.biz.ITOLShopImagesService;
 import com.sbm.module.onlineleasing.base.shopimages.domain.TOLShopImages;
@@ -12,10 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sbm.module.common.business.biz.impl.BusinessServiceImpl;
 import com.sbm.module.common.business.constant.TransactionConstant;
-import com.sbm.module.common.business.domain.Pagination;
-import com.sbm.module.onlineleasing.api.shop.biz.IShopVoService;
+import com.sbm.module.onlineleasing.api.admin.shop.biz.IShopVoService;
 import com.sbm.module.onlineleasing.base.shop.biz.ITOLShopService;
-import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
 
 /*****************************************************************************/
 /* 　　　　　　(C) Super Brand Mail Inc. 2014     　　　                     */
