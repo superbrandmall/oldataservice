@@ -13,8 +13,6 @@ public class MallVo {
 
 	private Pagination<TOLMall> pagination;
 
-	private TOLMallTraffic traffic;
-
 	private List<TOLMallTraffic> traffics;
 
 	private TOLMallBidStandard mallBidStandard;
@@ -33,14 +31,6 @@ public class MallVo {
 
 	public void setPagination(Pagination<TOLMall> pagination) {
 		this.pagination = pagination;
-	}
-
-	public TOLMallTraffic getTraffic() {
-		return traffic;
-	}
-
-	public void setTraffic(TOLMallTraffic traffic) {
-		this.traffic = traffic;
 	}
 
 	public List<TOLMallTraffic> getTraffics() {

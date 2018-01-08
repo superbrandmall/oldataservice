@@ -1,10 +1,10 @@
 package com.sbm.module.onlineleasing.base.bid.biz;
 
-import java.util.List;
-
 import com.sbm.module.common.business.biz.IDaoSupportService;
 import com.sbm.module.common.business.domain.Pagination;
 import com.sbm.module.onlineleasing.base.bid.domain.TOLBid;
+
+import java.util.List;
 
 /*****************************************************************************/
 /* 　　　　　　(C) Super Brand Mail Inc. 2014     　　　                     */
@@ -36,4 +36,8 @@ public interface ITOLBidService extends IDaoSupportService<TOLBid> {
 	Pagination<TOLBid> findAllByUserCodeAndApprovePage(TOLBid obj);
 
 	List<TOLBid> findAllBeforeNonStandardSubmit(String shopCode);
+
+	List<TOLBid> findAllByCondition(TOLBid obj);
+
+	Pagination<TOLBid> findAllByConditionPage(TOLBid obj);
 }

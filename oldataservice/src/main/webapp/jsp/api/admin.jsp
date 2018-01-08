@@ -127,16 +127,16 @@
 			}
 		};
 		*/
-		/*
+		///*
 		var url = "${base}/ol/api/mall/findByCode";
 		var map = {
 			mall : {
-				code : "OLMALL171212000007"
+				code : "OLMALL171212000008"
 			}
 		};
-		*/
+		//*/
 
-		///*
+		/*
 		var url = "${base}/ol/api/mall/saveOrUpdate";
 		var map = {
 			mall : {
@@ -144,11 +144,11 @@
 			},
 			mallBidStandard : {
 				id : 3,
-				updated : "2018-01-08 15:34:31",
+				updated : "2018-01-08 15:35:40",
 				maintenanceFee : "60"
 			}
 		};
-		//*/
+		*/
 
 		/*
 		var url = "${base}/ol/api/shop/findAllByConditionPage";
@@ -203,6 +203,25 @@
 			}
 		};
 		*/
+
+		/*
+		var url = "${base}/ol/api/bid/findAllByConditionPage";
+		var map = {
+			bid : {
+				page : 1,
+				pageCount : 2
+			}
+		};
+		*/
+		/*
+		var url = "${base}/ol/api/bid/findByCode";
+		var map = {
+			bid : {
+				code : "OLBID171222000002"
+			}
+		};
+		*/
+
 
 		$.ajax({
 			url : url,

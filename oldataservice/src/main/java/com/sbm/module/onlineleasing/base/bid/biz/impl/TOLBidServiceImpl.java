@@ -2,6 +2,7 @@ package com.sbm.module.onlineleasing.base.bid.biz.impl;
 
 import java.util.List;
 
+import com.sbm.module.onlineleasing.base.mall.domain.TOLMall;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -74,5 +75,15 @@ public class TOLBidServiceImpl extends DaoSupportServiceImpl<TOLBid> implements 
 	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 	public List<TOLBid> findAllBeforeNonStandardSubmit(String shopCode){
 		return dao.findAllBeforeNonStandardSubmit(shopCode);
+	}
+
+	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+	public List<TOLBid> findAllByCondition(TOLBid obj) {
+		return dao.findAllByCondition(obj);
+	}
+
+	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+	public Pagination<TOLBid> findAllByConditionPage(TOLBid obj) {
+		return dao.findAllByConditionPage(obj);
 	}
 }

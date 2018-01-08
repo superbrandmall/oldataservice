@@ -56,8 +56,10 @@ public class MallVoServiceImpl extends BusinessServiceImpl implements IMallVoSer
 	@Override
 	public void findByCode(MallVo vo) {
 		vo.setMall(mallService.findByCode(vo.getMall().getCode()));
-		vo.setTraffics(mallTrafficService.findAllByCode(vo.getMall().getCode()));
-		vo.setMallBidStandard(mallBidStandardService.findByCode(vo.getMall().getCode()));
+		if (null != vo.getMall()) {
+			vo.setTraffics(mallTrafficService.findAllByCode(vo.getMall().getCode()));
+			vo.setMallBidStandard(mallBidStandardService.findByCode(vo.getMall().getCode()));
+		}
 	}
 
 	/******************************************************************************************/
@@ -73,6 +75,8 @@ public class MallVoServiceImpl extends BusinessServiceImpl implements IMallVoSer
 			} else {
 				mallBidStandardService.save(vo.getMallBidStandard());
 			}
+			// 刷新缓存
+			mallBidStandardService.refreshCache();
 		}
 	}
 }

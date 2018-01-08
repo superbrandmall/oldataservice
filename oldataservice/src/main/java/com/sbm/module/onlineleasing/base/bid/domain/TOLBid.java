@@ -29,11 +29,32 @@ public class TOLBid extends BaseEntity {
 
 	private String userCode;
 
+	@Transient
+	private String email;
+
 	private String merchantCode;
+
+	@Transient
+	private String merchantName;
 
 	private String shopCode;
 
+	@Transient
+	private String unit;
+
+	@Transient
+	private String mallName;
+
+	@Transient
+	private String buildingName;
+
+	@Transient
+	private String floorName;
+
 	private String brandCode;
+
+	@Transient
+	private String brandName;
 
 	@Column(columnDefinition = "timestamp")
 	private Date startDate;
@@ -501,4 +522,59 @@ public class TOLBid extends BaseEntity {
 		this.billNumber = billNumber;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getMerchantName() {
+		return merchantName;
+	}
+
+	public void setMerchantName(String merchantName) {
+		this.merchantName = merchantName;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public String getMallName() {
+		return mallName;
+	}
+
+	public void setMallName(String mallName) {
+		this.mallName = mallName;
+	}
+
+	public String getBuildingName() {
+		return buildingName;
+	}
+
+	public void setBuildingName(String buildingName) {
+		this.buildingName = buildingName;
+	}
+
+	public String getFloorName() {
+		return floorName;
+	}
+
+	public void setFloorName(String floorName) {
+		this.floorName = floorName;
+	}
+
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
 }

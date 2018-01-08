@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.sbm.module.common.base.util.ListUtil;
 import com.sbm.module.onlineleasing.base.bid.constant.BidConstant;
+import com.sbm.module.onlineleasing.base.mall.domain.TOLMall;
 import org.springframework.stereotype.Repository;
 
 import com.sbm.module.common.business.dao.impl.BaseHibernateDaoImpl;
@@ -89,5 +90,19 @@ public class TOLBidDaoImpl extends BaseHibernateDaoImpl<TOLBid> implements ITOLB
 
 	}
 
+	public List<TOLBid> findAllByCondition(TOLBid obj) {
+		return find(findAllByConditionHql(obj));
+	}
 
+	public Pagination<TOLBid> findAllByConditionPage(TOLBid obj) {
+		return pageQuery(findAllByConditionHql(obj));
+	}
+
+	private HqlData findAllByConditionHql(TOLBid obj) {
+		HqlData data = getHqlData(obj);
+		StringBuffer sb = new StringBuffer("from TOLBid where 1=1 ");
+		sb.append(" order by id desc ");
+		data.setHql(sb.toString());
+		return data;
+	}
 }

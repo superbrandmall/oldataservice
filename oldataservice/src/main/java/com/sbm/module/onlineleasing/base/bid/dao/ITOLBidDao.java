@@ -14,6 +14,7 @@ import java.util.List;
 import com.sbm.module.common.business.dao.IBaseHibernateDao;
 import com.sbm.module.common.business.domain.Pagination;
 import com.sbm.module.onlineleasing.base.bid.domain.TOLBid;
+import com.sbm.module.onlineleasing.base.mall.domain.TOLMall;
 
 /*****************************************************************************/
 /* 　　　　　　(C) Super Brand Mail Inc. 2014     　　　                     */
@@ -43,4 +44,8 @@ public interface ITOLBidDao extends IBaseHibernateDao<TOLBid> {
 	Pagination<TOLBid> findAllByUserCodeAndApprovePage(TOLBid obj);
 
 	List<TOLBid> findAllBeforeNonStandardSubmit(String shopCode);
+
+	List<TOLBid> findAllByCondition(TOLBid obj);
+
+	Pagination<TOLBid> findAllByConditionPage(TOLBid obj);
 }
