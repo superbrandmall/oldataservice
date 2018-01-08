@@ -64,6 +64,7 @@ public class MallVoServiceImpl extends BusinessServiceImpl implements IMallVoSer
 
 	@Override
 	public void saveOrUpdate(MallVo vo) {
+		ParamsUtil.canNotBeEmpty(vo.getMall().getCode());
 		// 新增/保存mallBidStandard
 		if (null != vo.getMallBidStandard()) {
 			vo.getMallBidStandard().setCode(vo.getMall().getCode());

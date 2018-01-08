@@ -136,6 +136,20 @@
 		};
 		*/
 
+		///*
+		var url = "${base}/ol/api/mall/saveOrUpdate";
+		var map = {
+			mall : {
+				code : "OLMALL171212000008"
+			},
+			mallBidStandard : {
+				id : 3,
+				updated : "2018-01-08 15:34:31",
+				maintenanceFee : "60"
+			}
+		};
+		//*/
+
 		/*
 		var url = "${base}/ol/api/shop/findAllByConditionPage";
 		var map = {
@@ -163,14 +177,14 @@
 			}
 		};
 		*/
-		///*
+		/*
 		var url = "${base}/ol/api/merchant/findByCode";
 		var map = {
 			merchant : {
 				code : "OLMERCHANT171212002226"
 			}
 		};
-		//*/
+		*/
 
 		/*
 		var url = "${base}/ol/api/floor/findAllByConditionPage";
