@@ -2,7 +2,7 @@ package com.sbm.module.onlineleasing.api.merchantinfo.event;
 
 import com.sbm.module.common.base.pulisher.event.BusinessEvent;
 import com.sbm.module.common.base.pulisher.template.BusinessEventTemplate;
-import com.sbm.module.onlineleasing.api.merchantdetail.event.IDownloadMerchantDetailEvent;
+import com.sbm.module.onlineleasing.api.admin.merchantdetail.event.IDownloadMerchantDetailEvent;
 import com.sbm.module.onlineleasing.api.sysmessage.event.ISendSysMessageEvent;
 
 /*****************************************************************************/
