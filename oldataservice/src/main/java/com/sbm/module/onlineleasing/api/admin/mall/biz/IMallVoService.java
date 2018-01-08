@@ -19,4 +19,6 @@ public interface IMallVoService {
 
 	void findByCode(MallVo vo);
 
+	void saveOrUpdate(MallVo vo);
+
 }

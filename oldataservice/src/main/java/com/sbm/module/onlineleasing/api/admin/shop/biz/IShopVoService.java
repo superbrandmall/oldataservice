@@ -14,10 +14,10 @@ import com.sbm.module.onlineleasing.api.admin.shop.domain.ShopVo;
  */
 public interface IShopVoService {
 
-	public void findAllByConditionPage(ShopVo vo);
+	void findAllByConditionPage(ShopVo vo);
 
-	public void findByCode(ShopVo vo);
+	void findByCode(ShopVo vo);
 
-	public void saveOrUpdate(ShopVo vo);
+	void saveOrUpdate(ShopVo vo);
 
 }

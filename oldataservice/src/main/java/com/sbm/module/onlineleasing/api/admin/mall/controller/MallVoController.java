@@ -65,4 +65,23 @@ public class MallVoController extends BaseController {
 		return jsonContainer;
 	}
 
+	/******************************************************************************************/
+
+	/**
+	 *
+	 * saveOrUpdate:saveOrUpdate
+	 *
+	 * @author junkai.zhang
+	 * @param vo
+	 * @return
+	 */
+	@RequestMapping(value = "/saveOrUpdate")
+	@ResponseBody
+	public JsonContainer saveOrUpdate(@RequestBody MallVo vo) {
+		JsonContainer jsonContainer = getJsonContainer();
+		service.saveOrUpdate(vo);
+		setSuccessMessage(jsonContainer, vo);
+		return jsonContainer;
+	}
+
 }
