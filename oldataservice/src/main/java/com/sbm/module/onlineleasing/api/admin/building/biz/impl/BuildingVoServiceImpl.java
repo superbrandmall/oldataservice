@@ -1,13 +1,10 @@
-package com.sbm.module.onlineleasing.api.floor.biz.impl;
+package com.sbm.module.onlineleasing.api.admin.building.biz.impl;
 
 import com.sbm.module.common.business.biz.impl.BusinessServiceImpl;
 import com.sbm.module.common.business.constant.TransactionConstant;
-import com.sbm.module.onlineleasing.api.building.biz.IBuildingVoService;
-import com.sbm.module.onlineleasing.api.building.domain.BuildingVo;
-import com.sbm.module.onlineleasing.api.floor.biz.IFloorVoService;
-import com.sbm.module.onlineleasing.api.floor.domain.FloorVo;
+import com.sbm.module.onlineleasing.api.admin.building.biz.IBuildingVoService;
+import com.sbm.module.onlineleasing.api.admin.building.domain.BuildingVo;
 import com.sbm.module.onlineleasing.base.building.biz.ITOLBuildingService;
-import com.sbm.module.onlineleasing.base.floor.biz.ITOLFloorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -34,18 +31,18 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Component
 @Transactional(value = TransactionConstant.OL, propagation = Propagation.REQUIRED)
-public class FloorVoServiceImpl extends BusinessServiceImpl implements IFloorVoService {
+public class BuildingVoServiceImpl extends BusinessServiceImpl implements IBuildingVoService {
 
 	@Autowired
-	private ITOLFloorService floorService;
+	private ITOLBuildingService buildingService;
 
 	@Override
-	public void findAllByConditionPage(FloorVo vo) {
-		vo.setPagination(floorService.findAllByConditionPage(vo.getFloor()));
+	public void findAllByConditionPage(BuildingVo vo) {
+		vo.setPagination(buildingService.findAllByConditionPage(vo.getBuilding()));
 	}
 
 	@Override
-	public void findByCode(FloorVo vo) {
-		vo.setFloor(floorService.findByCode(vo.getFloor().getCode()));
+	public void findByCode(BuildingVo vo) {
+		vo.setBuilding(buildingService.findByCode(vo.getBuilding().getCode()));
 	}
 }

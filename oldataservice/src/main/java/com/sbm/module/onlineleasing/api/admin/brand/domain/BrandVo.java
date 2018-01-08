@@ -1,4 +1,4 @@
-package com.sbm.module.onlineleasing.api.brand.domain;
+package com.sbm.module.onlineleasing.api.admin.brand.domain;
 
 import com.sbm.module.common.business.domain.Pagination;
 import com.sbm.module.onlineleasing.base.brand.domain.TOLBrand;

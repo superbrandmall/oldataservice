@@ -1,4 +1,4 @@
-package com.sbm.module.onlineleasing.api.floor.domain;
+package com.sbm.module.onlineleasing.api.admin.floor.domain;
 
 import com.sbm.module.common.business.domain.Pagination;
 import com.sbm.module.onlineleasing.base.building.domain.TOLBuilding;

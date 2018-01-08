@@ -1,12 +1,10 @@
-package com.sbm.module.onlineleasing.api.floor.controller;
+package com.sbm.module.onlineleasing.api.admin.building.controller;
 
 import com.sbm.module.common.api.jsonwebtoken.annotation.Authorization;
 import com.sbm.module.common.base.controller.BaseController;
 import com.sbm.module.common.base.domain.JsonContainer;
-import com.sbm.module.onlineleasing.api.building.biz.IBuildingVoService;
-import com.sbm.module.onlineleasing.api.building.domain.BuildingVo;
-import com.sbm.module.onlineleasing.api.floor.biz.IFloorVoService;
-import com.sbm.module.onlineleasing.api.floor.domain.FloorVo;
+import com.sbm.module.onlineleasing.api.admin.building.biz.IBuildingVoService;
+import com.sbm.module.onlineleasing.api.admin.building.domain.BuildingVo;
 import com.sbm.module.onlineleasing.base.user.constant.UserConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 // ***************************************************************************/
 @Authorization(type = UserConstant.ADMIN)
 @Controller
-@RequestMapping("/ol/api/floor")
-public class FloorVoController extends BaseController {
+@RequestMapping("/ol/api/building")
+public class BuildingVoController extends BaseController {
 
 	@Autowired
-	private IFloorVoService service;
+	private IBuildingVoService service;
 
 	/******************************************************************************************/
 	// 条件查询分页
@@ -43,7 +41,7 @@ public class FloorVoController extends BaseController {
 	 */
 	@RequestMapping(value = "/findAllByConditionPage")
 	@ResponseBody
-	public JsonContainer findAllByConditionPage(@RequestBody FloorVo vo) {
+	public JsonContainer findAllByConditionPage(@RequestBody BuildingVo vo) {
 		JsonContainer jsonContainer = getJsonContainer();
 		service.findAllByConditionPage(vo);
 		setSuccessMessage(jsonContainer, vo);
@@ -60,7 +58,7 @@ public class FloorVoController extends BaseController {
 	 */
 	@RequestMapping(value = "/findByCode")
 	@ResponseBody
-	public JsonContainer detail(@RequestBody FloorVo vo) {
+	public JsonContainer detail(@RequestBody BuildingVo vo) {
 		JsonContainer jsonContainer = getJsonContainer();
 		service.findByCode(vo);
 		setSuccessMessage(jsonContainer, vo);

@@ -1,7 +1,6 @@
-package com.sbm.module.onlineleasing.api.floor.biz;
+package com.sbm.module.onlineleasing.api.admin.building.biz;
 
-import com.sbm.module.onlineleasing.api.building.domain.BuildingVo;
-import com.sbm.module.onlineleasing.api.floor.domain.FloorVo;
+import com.sbm.module.onlineleasing.api.admin.building.domain.BuildingVo;
 
 /*****************************************************************************/
 
@@ -14,10 +13,10 @@ import com.sbm.module.onlineleasing.api.floor.domain.FloorVo;
  * 
  * @author ：junkai.zhang
  */
-public interface IFloorVoService {
+public interface IBuildingVoService {
 
-	void findAllByConditionPage(FloorVo vo);
+	void findAllByConditionPage(BuildingVo vo);
 
-	void findByCode(FloorVo vo);
+	void findByCode(BuildingVo vo);
 
 }

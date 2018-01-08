@@ -1,8 +1,9 @@
-package com.sbm.module.onlineleasing.api.merchant.biz;
+package com.sbm.module.onlineleasing.api.admin.floor.biz;
 
-import com.sbm.module.onlineleasing.api.merchant.domain.MerchantVo;
+import com.sbm.module.onlineleasing.api.admin.floor.domain.FloorVo;
 
 /*****************************************************************************/
+
 /**
  * Project Name:onlineleasing<br/>
  * Package Name:com.sbm.module.onlineleasing.shop.biz<br/>
@@ -12,10 +13,10 @@ import com.sbm.module.onlineleasing.api.merchant.domain.MerchantVo;
  * 
  * @author ：junkai.zhang
  */
-public interface IMerchantVoService {
+public interface IFloorVoService {
 
-	void findAllByConditionPage(MerchantVo vo);
+	void findAllByConditionPage(FloorVo vo);
 
-	void findByCode(MerchantVo vo);
+	void findByCode(FloorVo vo);
 
 }

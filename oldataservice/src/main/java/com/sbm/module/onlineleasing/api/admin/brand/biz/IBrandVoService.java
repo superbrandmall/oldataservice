@@ -1,9 +1,6 @@
-package com.sbm.module.onlineleasing.api.brand.biz;
+package com.sbm.module.onlineleasing.api.admin.brand.biz;
 
-import com.sbm.module.common.business.domain.Pagination;
-import com.sbm.module.onlineleasing.api.brand.domain.BrandVo;
-import com.sbm.module.onlineleasing.api.building.domain.BuildingVo;
-import com.sbm.module.onlineleasing.base.brand.domain.TOLBrand;
+import com.sbm.module.onlineleasing.api.admin.brand.domain.BrandVo;
 
 /*****************************************************************************/
 /**

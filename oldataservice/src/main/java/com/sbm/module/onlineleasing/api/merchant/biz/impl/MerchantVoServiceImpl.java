@@ -1,6 +1,5 @@
 package com.sbm.module.onlineleasing.api.merchant.biz.impl;
 
-import com.sbm.module.onlineleasing.api.building.domain.BuildingVo;
 import com.sbm.module.onlineleasing.api.merchant.domain.MerchantVo;
 import com.sbm.module.onlineleasing.base.merchantaddress.biz.ITOLMerchantAddressService;
 import com.sbm.module.onlineleasing.base.merchantbankaccount.biz.ITOLMerchantBankAccountService;

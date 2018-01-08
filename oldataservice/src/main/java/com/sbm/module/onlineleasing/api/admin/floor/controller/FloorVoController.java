@@ -1,23 +1,20 @@
-package com.sbm.module.onlineleasing.api.brand.controller;
+package com.sbm.module.onlineleasing.api.admin.floor.controller;
 
-import com.sbm.module.onlineleasing.api.brand.domain.BrandVo;
-import com.sbm.module.onlineleasing.api.building.domain.BuildingVo;
+import com.sbm.module.common.api.jsonwebtoken.annotation.Authorization;
+import com.sbm.module.common.base.controller.BaseController;
+import com.sbm.module.common.base.domain.JsonContainer;
+import com.sbm.module.onlineleasing.api.admin.floor.biz.IFloorVoService;
+import com.sbm.module.onlineleasing.api.admin.floor.domain.FloorVo;
+import com.sbm.module.onlineleasing.base.user.constant.UserConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sbm.module.common.api.jsonwebtoken.annotation.Authorization;
-import com.sbm.module.common.base.controller.BaseController;
-import com.sbm.module.common.base.domain.JsonContainer;
-import com.sbm.module.common.business.domain.Pagination;
-import com.sbm.module.onlineleasing.api.brand.biz.IBrandVoService;
-import com.sbm.module.onlineleasing.base.brand.domain.TOLBrand;
-import com.sbm.module.onlineleasing.base.user.constant.UserConstant;
-
 /*****************************************************************************/
 /* 　　　　　　(C) Super Brand Mail Inc. 2014     　　　                     */
+
 /*****************************************************************************/
 
 // ***************************************************************************/
@@ -25,11 +22,11 @@ import com.sbm.module.onlineleasing.base.user.constant.UserConstant;
 // ***************************************************************************/
 @Authorization(type = UserConstant.ADMIN)
 @Controller
-@RequestMapping("/ol/api/brand")
-public class BrandVoController extends BaseController {
+@RequestMapping("/ol/api/floor")
+public class FloorVoController extends BaseController {
 
 	@Autowired
-	private IBrandVoService service;
+	private IFloorVoService service;
 
 	/******************************************************************************************/
 	// 条件查询分页
@@ -44,7 +41,7 @@ public class BrandVoController extends BaseController {
 	 */
 	@RequestMapping(value = "/findAllByConditionPage")
 	@ResponseBody
-	public JsonContainer findAllByConditionPage(@RequestBody BrandVo vo) {
+	public JsonContainer findAllByConditionPage(@RequestBody FloorVo vo) {
 		JsonContainer jsonContainer = getJsonContainer();
 		service.findAllByConditionPage(vo);
 		setSuccessMessage(jsonContainer, vo);
@@ -61,11 +58,10 @@ public class BrandVoController extends BaseController {
 	 */
 	@RequestMapping(value = "/findByCode")
 	@ResponseBody
-	public JsonContainer detail(@RequestBody BrandVo vo) {
+	public JsonContainer detail(@RequestBody FloorVo vo) {
 		JsonContainer jsonContainer = getJsonContainer();
 		service.findByCode(vo);
 		setSuccessMessage(jsonContainer, vo);
 		return jsonContainer;
 	}
-
 }
