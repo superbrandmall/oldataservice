@@ -3,6 +3,8 @@ package com.sbm.module.onlineleasing.base.user.biz.impl;
 import java.util.Date;
 import java.util.List;
 
+import com.sbm.module.common.business.domain.Pagination;
+import com.sbm.module.onlineleasing.base.floor.domain.TOLFloor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -56,6 +58,17 @@ public class TOLUserServiceImpl extends DaoSupportServiceImpl<TOLUser> implement
 	public List<TOLUser> findAllByMerchantCodes(List<String> merchantCodes) {
 		return dao.findAllByMerchantCodes(merchantCodes);
 	}
+
+	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+	public List<TOLUser> findAllByCondition(TOLUser obj) {
+		return dao.findAllByCondition(obj);
+	}
+
+	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+	public Pagination<TOLUser> findAllByConditionPage(TOLUser obj) {
+		return dao.findAllByConditionPage(obj);
+	}
+
 
 	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 	public TOLUser findByCondition(TOLUser obj) {

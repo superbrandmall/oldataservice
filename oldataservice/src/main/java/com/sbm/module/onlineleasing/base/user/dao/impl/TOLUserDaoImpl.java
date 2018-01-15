@@ -2,6 +2,9 @@ package com.sbm.module.onlineleasing.base.user.dao.impl;
 
 import java.util.List;
 
+import com.sbm.module.common.business.domain.HqlData;
+import com.sbm.module.common.business.domain.Pagination;
+import com.sbm.module.onlineleasing.base.floor.domain.TOLFloor;
 import org.springframework.stereotype.Repository;
 
 import com.sbm.module.common.base.util.ListUtil;
@@ -46,6 +49,28 @@ public class TOLUserDaoImpl extends BaseHibernateDaoImpl<TOLUser> implements ITO
 		sb.append(" and merchantCode in ").append(ListUtil.strList2HQLStr(merchantCodes));
 		List<TOLUser> list = find(sb.toString());
 		return list;
+	}
+
+	public List<TOLUser> findAllByCondition(TOLUser obj) {
+		return find(findAllByConditionHql(obj));
+	}
+
+	public Pagination<TOLUser> findAllByConditionPage(TOLUser obj) {
+		return pageQuery(findAllByConditionHql(obj));
+	}
+
+	private HqlData findAllByConditionHql(TOLUser obj) {
+		HqlData data = getHqlData(obj);
+		StringBuffer sb = new StringBuffer("from TOLUser where 1=1 ");
+		// sb.append(" and userCode = ? ");
+		// data.getObjs().add(obj.getUserCode());
+		// if (null != obj.getType()) {
+		// sb.append(" and type = ? ");
+		// data.getObjs().add(obj.getType());
+		// }
+		sb.append(" order by id desc ");
+		data.setHql(sb.toString());
+		return data;
 	}
 
 	public TOLUser findByCondition(TOLUser obj) {

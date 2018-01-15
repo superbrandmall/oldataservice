@@ -3,6 +3,8 @@ package com.sbm.module.onlineleasing.base.user.dao;
 import java.util.List;
 
 import com.sbm.module.common.business.dao.IBaseHibernateDao;
+import com.sbm.module.common.business.domain.Pagination;
+import com.sbm.module.onlineleasing.base.floor.domain.TOLFloor;
 import com.sbm.module.onlineleasing.base.user.domain.TOLUser;
 
 /*****************************************************************************/
@@ -17,20 +19,24 @@ import com.sbm.module.onlineleasing.base.user.domain.TOLUser;
  */
 public interface ITOLUserDao extends IBaseHibernateDao<TOLUser> {
 
-	public List<TOLUser> findAll();
+	List<TOLUser> findAll();
 
-	public List<TOLUser> findAllByMerchantCode(String merchantCode);
+	List<TOLUser> findAllByMerchantCode(String merchantCode);
 
-	public List<TOLUser> findAllByMerchantCodes(List<String> merchantCodes);
+	List<TOLUser> findAllByMerchantCodes(List<String> merchantCodes);
 
-	public TOLUser findByCondition(TOLUser obj);
+	List<TOLUser> findAllByCondition(TOLUser obj);
 
-	public TOLUser findByCode(String code);
+	Pagination<TOLUser> findAllByConditionPage(TOLUser obj);
 
-	public TOLUser findByMobile(String mobile);
+	TOLUser findByCondition(TOLUser obj);
 
-	public TOLUser findByEmail(String email);
+	TOLUser findByCode(String code);
 
-	public TOLUser findByUsername(String username);
+	TOLUser findByMobile(String mobile);
+
+	TOLUser findByEmail(String email);
+
+	TOLUser findByUsername(String username);
 
 }

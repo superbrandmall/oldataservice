@@ -127,14 +127,14 @@
 			}
 		};
 		*/
-		///*
+		/*
 		var url = "${base}/ol/api/mall/findByCode";
 		var map = {
 			mall : {
 				code : "OLMALL171212000008"
 			}
 		};
-		//*/
+		*/
 
 		/*
 		var url = "${base}/ol/api/mall/saveOrUpdate";
@@ -222,6 +222,23 @@
 		};
 		*/
 
+		/*
+		var url = "${base}/ol/api/user/findAllByConditionPage";
+		var map = {
+			user : {
+				page : 1,
+				pageCount : 2
+			}
+		};
+		*/
+		///*
+		var url = "${base}/ol/api/user/findByCode";
+		var map = {
+			user : {
+				code : "OLUSER171214000004"
+			}
+		};
+		//*/
 
 		$.ajax({
 			url : url,
