@@ -115,6 +115,11 @@ public class SubmitBidServiceImpl extends BusinessServiceImpl implements ISubmit
 		if (ShopConstant.SHOP_STATE_0.equals(shop.getShopState())) {
 			throw new BusinessException(BusinessCode.C5302, new Object[]{shop.getCode(), shop.getShopState()}, null);
 		}
+		// 商铺是否锁定
+		if (0 == shop.getState()) {
+			throw new BusinessException(BusinessCode.C5303, new Object[]{shop.getCode(), shop.getState()}, null);
+		}
+
 		bidInfo.setShop(shop);
 
 		/*********************************************************************************************/

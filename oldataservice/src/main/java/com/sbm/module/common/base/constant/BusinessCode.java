@@ -313,6 +313,10 @@ public enum BusinessCode {
 	 * 商铺在租。shopCode:{0}, shopState:{1}
 	 */
 	C5302("C5302", "商铺状态不可用。shopCode:{0}, shopState:{1}"),
+	/**
+	 * 商铺已被锁定。shopCode:{0}, state:{1}
+	 */
+	C5303("C5303", "商铺已被锁定。shopCode:{0}, state:{1}"),
 
 	/*****************************************************************/
 	// 出价
