@@ -20,4 +20,7 @@ public interface IShopVoService {
 
 	void saveOrUpdate(ShopVo vo);
 
+	void lock(ShopVo vo);
+
+	void unlock(ShopVo vo);
 }

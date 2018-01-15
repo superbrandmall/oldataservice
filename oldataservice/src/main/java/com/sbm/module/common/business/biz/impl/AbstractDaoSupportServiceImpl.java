@@ -83,6 +83,22 @@ public abstract class AbstractDaoSupportServiceImpl<T> extends BusinessServiceIm
 		dao.update(t);
 	}
 
+	public void lock(T t) {
+		BaseEntity obj = (BaseEntity) t;
+		Class<T> entityClass = getEntityClass();
+		obj = (BaseEntity) get(entityClass, obj.getId());
+		obj.setState(0);
+		dao.update((T)obj);
+	}
+
+	public void unlock(T t) {
+		BaseEntity obj = (BaseEntity) t;
+		Class<T> entityClass = getEntityClass();
+		obj = (BaseEntity) get(entityClass, obj.getId());
+		obj.setState(1);
+		dao.update((T)obj);
+	}
+
 	public void delete(T t) {
 		dao.delete(t);
 	}

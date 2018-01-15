@@ -14,11 +14,11 @@ import java.io.Serializable;
  */
 public interface IDaoSupportService<T> extends IBusinessService {
 
-	public T get(Class<T> entityClass, Serializable id);
+	T get(Class<T> entityClass, Serializable id);
 
-	public void saveOrUpdate(T t);
+	void saveOrUpdate(T t);
 
-	public void save(T t);
+	void save(T t);
 
 	/**
 	 * 
@@ -27,10 +27,14 @@ public interface IDaoSupportService<T> extends IBusinessService {
 	 * @author junkai.zhang
 	 * @param t
 	 */
-	public void update(T t);
+	void update(T t);
 
-	public void delete(T t);
+	void lock(T t);
 
-	public void flushAndClear();
+	void unlock(T t);
+
+	void delete(T t);
+
+	void flushAndClear();
 
 }

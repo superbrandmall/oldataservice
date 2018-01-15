@@ -2,6 +2,7 @@ package com.sbm.module.onlineleasing.api.admin.shop.biz.impl;
 
 import com.sbm.module.common.business.util.ParamsUtil;
 import com.sbm.module.onlineleasing.api.admin.shop.domain.ShopVo;
+import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
 import com.sbm.module.onlineleasing.base.shopcoords.biz.ITOLShopCoordsService;
 import com.sbm.module.onlineleasing.base.shopimages.biz.ITOLShopImagesService;
 import com.sbm.module.onlineleasing.base.shopimages.domain.TOLShopImages;
@@ -93,5 +94,17 @@ public class ShopVoServiceImpl extends BusinessServiceImpl implements IShopVoSer
 				shopCoordsService.save(vo.getCoords());
 			}
 		}
+	}
+
+	/******************************************************************************************/
+
+	@Override
+	public void lock(ShopVo vo) {
+		shopService.lock(vo.getShop());
+	}
+
+	@Override
+	public void unlock(ShopVo vo) {
+		shopService.unlock(vo.getShop());
 	}
 }

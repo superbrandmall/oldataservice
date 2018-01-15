@@ -19,15 +19,15 @@ import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
  */
 public interface ITOLShopService extends IDaoSupportService<TOLShop> {
 
-	public List<TOLShop> findAll();
+	List<TOLShop> findAll();
 
-	public TOLShop findByCode(String code);
+	TOLShop findByCode(String code);
 
-	public TOLShop findByHdUuid(String hdUuid);
+	TOLShop findByHdUuid(String hdUuid);
 
-	public List<TOLShop> findAllByCondition(TOLShop obj);
+	List<TOLShop> findAllByCondition(TOLShop obj);
 
-	public Pagination<TOLShop> findAllByConditionPage(TOLShop obj);
+	Pagination<TOLShop> findAllByConditionPage(TOLShop obj);
 
 	/**
 	 * 
@@ -36,7 +36,7 @@ public interface ITOLShopService extends IDaoSupportService<TOLShop> {
 	 * @author junkai.zhang
 	 * @param obj
 	 */
-	public void saveShop(TOLShop obj);
+	void saveShop(TOLShop obj);
 
 	/**
 	 * 
@@ -44,11 +44,11 @@ public interface ITOLShopService extends IDaoSupportService<TOLShop> {
 	 * 
 	 * @author junkai.zhang
 	 */
-	public void refreshCache();
+	void refreshCache();
 
-	public TOLShop findByCondition(TOLShop obj);
+	TOLShop findByCondition(TOLShop obj);
 
-	public List<TOLShop> findAllBySearchShop(SearchShopVo vo);
+	List<TOLShop> findAllBySearchShop(SearchShopVo vo);
 
 	/**
 	 * 
@@ -57,11 +57,11 @@ public interface ITOLShopService extends IDaoSupportService<TOLShop> {
 	 * @author junkai.zhang
 	 * @param obj
 	 */
-	public void checkShopState(TOLShop obj);
+	void checkShopState(TOLShop obj);
 	
-	public List<TOLShop> findCountGroupByMall(String mallCode);
+	List<TOLShop> findCountGroupByMall(String mallCode);
 	
-	public List<TOLShop> findCountGroupByFloor(String floorCode);
+	List<TOLShop> findCountGroupByFloor(String floorCode);
 	
-	public List<TOLShop> findCountGroupByMallBuildingFloor(String mallCode, String buildingCode, String floorCode);
+	List<TOLShop> findCountGroupByMallBuildingFloor(String mallCode, String buildingCode, String floorCode);
 }

@@ -87,7 +87,41 @@ public class ShopVoController extends BaseController {
 		return jsonContainer;
 	}
 
+	/******************************************************************************************/
 
+	/**
+	 *
+	 * lock:lock
+	 *
+	 * @author junkai.zhang
+	 * @param vo
+	 * @return
+	 */
+	@RequestMapping(value = "/lock")
+	@ResponseBody
+	public JsonContainer lock(@RequestBody ShopVo vo) {
+		JsonContainer jsonContainer = getJsonContainer();
+		service.lock(vo);
+		setSuccessMessage(jsonContainer, vo);
+		return jsonContainer;
+	}
 
+	/******************************************************************************************/
 
+	/**
+	 *
+	 * unlock:unlock
+	 *
+	 * @author junkai.zhang
+	 * @param vo
+	 * @return
+	 */
+	@RequestMapping(value = "/unlock")
+	@ResponseBody
+	public JsonContainer unlock(@RequestBody ShopVo vo) {
+		JsonContainer jsonContainer = getJsonContainer();
+		service.unlock(vo);
+		setSuccessMessage(jsonContainer, vo);
+		return jsonContainer;
+	}
 }

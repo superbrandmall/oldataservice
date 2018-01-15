@@ -58,6 +58,16 @@ public class DaoSupportServiceImpl<T> extends AbstractDaoSupportServiceImpl<T> i
 		super.save(t);
 	}
 
+	@Override
+	public void lock(T t) {
+		super.lock(t);
+	}
+
+	@Override
+	public void unlock(T t) {
+		super.unlock(t);
+	}
+
 	public void update(T t) {
 		super.update(t);
 	}

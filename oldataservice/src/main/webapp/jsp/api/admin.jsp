@@ -169,6 +169,24 @@
 		*/
 
 		/*
+		var url = "${base}/ol/api/shop/lock";
+		var map = {
+			shop : {
+				id : 1
+			}
+		};
+		*/
+
+		///*
+		var url = "${base}/ol/api/shop/unlock";
+		var map = {
+			shop : {
+				id : 1
+			}
+		};
+		//*/
+
+		/*
 		var url = "${base}/ol/api/merchant/findAllByConditionPage";
 		var map = {
 			merchant : {
@@ -231,14 +249,16 @@
 			}
 		};
 		*/
-		///*
+		/*
 		var url = "${base}/ol/api/user/findByCode";
 		var map = {
 			user : {
 				code : "OLUSER171214000004"
 			}
 		};
-		//*/
+		*/
+
+
 
 		$.ajax({
 			url : url,
