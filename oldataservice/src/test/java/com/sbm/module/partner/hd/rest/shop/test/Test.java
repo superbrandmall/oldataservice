@@ -32,7 +32,7 @@ public class Test {
 	public void test() {
 		try {
 			QueryFilter queryFilter = new QueryFilter();
-			queryFilter.setPage(396);
+			queryFilter.setPage(1);
 			queryFilter.getFilter().put("type", "shoppe");
 			
 			service.query(queryFilter);

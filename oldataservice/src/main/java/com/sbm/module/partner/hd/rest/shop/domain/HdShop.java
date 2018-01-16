@@ -48,6 +48,8 @@ public class HdShop {
 
 	private List<HdMediaFile> mediaFiles;
 
+	private List<HdConditionTemplate> templates;
+
 	public String getUuid() {
 		return uuid;
 	}
@@ -161,4 +163,11 @@ public class HdShop {
 		this.mediaFiles = mediaFiles;
 	}
 
+	public List<HdConditionTemplate> getTemplates() {
+		return templates;
+	}
+
+	public void setTemplates(List<HdConditionTemplate> templates) {
+		this.templates = templates;
+	}
 }
