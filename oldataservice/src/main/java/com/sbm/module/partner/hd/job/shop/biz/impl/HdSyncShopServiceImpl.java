@@ -2,10 +2,18 @@ package com.sbm.module.partner.hd.job.shop.biz.impl;
 
 import java.text.MessageFormat;
 import java.util.Date;
+import java.util.List;
 
 import com.sbm.module.common.base.util.dateutil.DifferentDays;
 import com.sbm.module.common.business.util.AppPropertyUtils;
-import com.sbm.module.partner.hd.rest.base.domain.HdUCN;
+import com.sbm.module.onlineleasing.api.upload.biz.IUploadService;
+import com.sbm.module.onlineleasing.api.upload.constant.UploadConstant;
+import com.sbm.module.onlineleasing.base.merchantbankaccount.domain.TOLMerchantBankAccount;
+import com.sbm.module.onlineleasing.base.shopengineeringimages.biz.ITOLShopEngineeringImagesService;
+import com.sbm.module.onlineleasing.base.shopengineeringimages.dao.ITOLShopEngineeringImagesDao;
+import com.sbm.module.onlineleasing.base.shopengineeringimages.domain.TOLShopEngineeringImages;
+import com.sbm.module.partner.hd.rest.base.domain.*;
+import com.sbm.module.partner.hd.rest.merchant.domain.HdBank;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,9 +34,6 @@ import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
 import com.sbm.module.partner.hd.job.base.biz.impl.HdSyncServiceImpl;
 import com.sbm.module.partner.hd.job.base.domain.HdSyncDetail;
 import com.sbm.module.partner.hd.rest.base.constant.HdConstant;
-import com.sbm.module.partner.hd.rest.base.domain.HdResult;
-import com.sbm.module.partner.hd.rest.base.domain.HdResultBody;
-import com.sbm.module.partner.hd.rest.base.domain.QueryFilter;
 import com.sbm.module.partner.hd.rest.shop.biz.IHdShopService;
 import com.sbm.module.partner.hd.rest.shop.domain.HdShop;
 
@@ -62,6 +67,11 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 	private ITOLBrandService brandService;
 	@Autowired
 	private ITOLShopService service;
+	@Autowired
+	private ITOLShopEngineeringImagesService shopEngineeringImagesService;
+
+	@Autowired
+	private IUploadService uploadService;
 
 	@Autowired
 	private IHdShopService hdShopService;
@@ -80,10 +90,10 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 		HdResult<HdResultBody<HdShop>> result = query(queryFilter);
 		// 遍历查询
 		for (int i = 1; i < result.getBody().getPageCount(); i++) {
-//			// TODO
-//			if (i >= 3) {
-//				break;
-//			}
+			// TODO
+			if (i >= 3) {
+				break;
+			}
 			queryFilter.setPage(i);
 			query(queryFilter);
 		}
@@ -97,17 +107,57 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 		// 遍历结果
 		for (HdShop obj : result.getBody().getRecords()) {
 			TOLShop po = service.findByHdUuid(obj.getUuid());
+			TOLShopEngineeringImages shopEngineeringImages;
 			// 不存在新增
 			if (null == po) {
 				po = new TOLShop();
 				convert(po, obj);
 				service.saveShop(po);
 				detail.getInsertList().add(po);
+
+				// 工程图
+				for (HdMediaFile file : obj.getMediaFiles()) {
+					shopEngineeringImages = new TOLShopEngineeringImages();
+					shopEngineeringImages.setCode(po.getCode());
+					convert(shopEngineeringImages, file);
+					shopEngineeringImagesService.save(shopEngineeringImages);
+				}
+
 			}
 			// 存在更新
 			else {
 				convert(po, obj);
 				service.update(po);
+
+				// 工程图
+				List<TOLShopEngineeringImages> list = shopEngineeringImagesService.findAllByCode(po.getCode());
+				if (list.size() <= obj.getMediaFiles().size()) {
+					for (int i = 0; i < obj.getMediaFiles().size(); i++) {
+						if (i < list.size()) {
+							shopEngineeringImages = list.get(i);
+							convert(shopEngineeringImages, obj.getMediaFiles().get(i));
+							shopEngineeringImagesService.update(shopEngineeringImages);
+						} else {
+							shopEngineeringImages = new TOLShopEngineeringImages();
+							shopEngineeringImages.setCode(po.getCode());
+							convert(shopEngineeringImages, obj.getMediaFiles().get(i));
+							shopEngineeringImagesService.save(shopEngineeringImages);
+						}
+					}
+				} else {
+					for (int i = 0; i < list.size(); i++) {
+						if (i < obj.getMediaFiles().size()) {
+							shopEngineeringImages = list.get(i);
+							convert(shopEngineeringImages, obj.getMediaFiles().get(i));
+							shopEngineeringImagesService.update(shopEngineeringImages);
+						} else {
+							shopEngineeringImages = list.get(i);
+							shopEngineeringImagesService.delete(shopEngineeringImages);
+						}
+					}
+				}
+
+
 				detail.getUpdateList().add(po);
 			}
 		}
@@ -213,8 +263,22 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 			}
 		}
 
-		// TODO 附件
-		// TODO 工程条件系列
+	}
+
+	/**
+	 * 转换工程图
+	 * @param shopEngineeringImages
+	 * @param obj
+	 */
+	private void convert(TOLShopEngineeringImages shopEngineeringImages, HdMediaFile obj) {
+		// 类型
+		shopEngineeringImages.setAttachmentType(obj.getAttachmentType());
+		// 生成upload明细
+		String uri = uploadService.saveFileUploadDetail(obj.getId(),
+				UploadConstant.CONTAINER_NAME_DEFAULT,
+				uploadService.getPrefix(shopEngineeringImages.getCode(), UploadConstant.PIC, UploadConstant.ENGINEERING_IMAGE));
+		// 地址
+		shopEngineeringImages.setImage(uri);
 	}
 
 }

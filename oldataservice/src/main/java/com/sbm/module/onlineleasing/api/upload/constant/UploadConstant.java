@@ -19,6 +19,8 @@ public class UploadConstant {
 	/***************************************************************************/
 	
 	public static final String PDF = "pdf";
+
+	public static final String PIC = "pic";
 	
 	/***************************************************************************/
 	
@@ -36,5 +38,9 @@ public class UploadConstant {
 	 * 保证金
 	 */
 	public static final String DEPOSIT_BILL = "depositBill";
-	
+
+	/**
+	 * 工程图
+	 */
+	public static final String ENGINEERING_IMAGE = "engineeringImage";
 }
