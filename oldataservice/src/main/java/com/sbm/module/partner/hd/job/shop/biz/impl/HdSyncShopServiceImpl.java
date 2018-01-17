@@ -1,9 +1,11 @@
 package com.sbm.module.partner.hd.job.shop.biz.impl;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.JSON;
 import com.sbm.module.common.base.util.dateutil.DifferentDays;
 import com.sbm.module.common.business.util.AppPropertyUtils;
 import com.sbm.module.onlineleasing.api.upload.biz.IUploadService;
@@ -12,8 +14,13 @@ import com.sbm.module.onlineleasing.base.merchantbankaccount.domain.TOLMerchantB
 import com.sbm.module.onlineleasing.base.shopengineeringimages.biz.ITOLShopEngineeringImagesService;
 import com.sbm.module.onlineleasing.base.shopengineeringimages.dao.ITOLShopEngineeringImagesDao;
 import com.sbm.module.onlineleasing.base.shopengineeringimages.domain.TOLShopEngineeringImages;
+import com.sbm.module.onlineleasing.base.shopengineeringspecifications.biz.ITOLShopEngineeringSpecificationsService;
+import com.sbm.module.onlineleasing.base.shopengineeringspecifications.domain.TOLShopEngineeringSpecifications;
 import com.sbm.module.partner.hd.rest.base.domain.*;
 import com.sbm.module.partner.hd.rest.merchant.domain.HdBank;
+import com.sbm.module.partner.hd.rest.shop.domain.HdConditionTemplate;
+import com.sbm.module.partner.hd.rest.shop.domain.HdProjectCondition;
+import com.sbm.module.partner.hd.rest.shop.domain.HdProjectContent;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -69,6 +76,8 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 	private ITOLShopService service;
 	@Autowired
 	private ITOLShopEngineeringImagesService shopEngineeringImagesService;
+	@Autowired
+	private ITOLShopEngineeringSpecificationsService shopEngineeringSpecificationsService;
 
 	@Autowired
 	private IUploadService uploadService;
@@ -108,6 +117,7 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 		for (HdShop obj : result.getBody().getRecords()) {
 			TOLShop po = service.findByHdUuid(obj.getUuid());
 			TOLShopEngineeringImages shopEngineeringImages;
+			TOLShopEngineeringSpecifications shopEngineeringSpecifications;
 			// 不存在新增
 			if (null == po) {
 				po = new TOLShop();
@@ -123,6 +133,11 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 					shopEngineeringImagesService.save(shopEngineeringImages);
 				}
 
+				// 工程条件
+				List<TOLShopEngineeringSpecifications> vos = getSpecifications(obj, po);
+				for (TOLShopEngineeringSpecifications vo : vos) {
+					shopEngineeringSpecificationsService.save(vo);
+				}
 			}
 			// 存在更新
 			else {
@@ -157,6 +172,34 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 					}
 				}
 
+				// 工程条件
+				List<TOLShopEngineeringSpecifications> pos = shopEngineeringSpecificationsService.findAllByCode(po.getCode());
+				List<TOLShopEngineeringSpecifications> vos = getSpecifications(obj, po);
+				if (pos.size() <= vos.size()) {
+					for (int i = 0; i < vos.size(); i++) {
+						if (i < pos.size()) {
+							shopEngineeringSpecifications = pos.get(i);
+							convert(shopEngineeringSpecifications, vos.get(i));
+							shopEngineeringSpecificationsService.update(shopEngineeringSpecifications);
+						} else {
+							shopEngineeringSpecifications = new TOLShopEngineeringSpecifications();
+							shopEngineeringSpecifications.setCode(po.getCode());
+							convert(shopEngineeringSpecifications, vos.get(i));
+							shopEngineeringSpecificationsService.save(shopEngineeringSpecifications);
+						}
+					}
+				} else {
+					for (int i = 0; i < pos.size(); i++) {
+						if (i < vos.size()) {
+							shopEngineeringSpecifications = pos.get(i);
+							convert(shopEngineeringSpecifications, vos.get(i));
+							shopEngineeringSpecificationsService.update(shopEngineeringSpecifications);
+						} else {
+							shopEngineeringSpecifications = pos.get(i);
+							shopEngineeringSpecificationsService.delete(shopEngineeringSpecifications);
+						}
+					}
+				}
 
 				detail.getUpdateList().add(po);
 			}
@@ -281,4 +324,43 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 		shopEngineeringImages.setImage(uri);
 	}
 
+
+	/**
+	 * 转换工程条件
+	 * @param shopEngineeringSpecifications
+	 * @param obj
+	 * @param condition
+	 */
+	private void convert(TOLShopEngineeringSpecifications shopEngineeringSpecifications, HdProjectContent obj, HdProjectCondition condition ) {
+		shopEngineeringSpecifications.setKey(condition.getKey());
+		shopEngineeringSpecifications.setName(condition.getName());
+		shopEngineeringSpecifications.setTitle(obj.getTitle());
+		shopEngineeringSpecifications.setNumber(obj.getNumber());
+		shopEngineeringSpecifications.setSpec(obj.getSpec());
+	}
+
+	private List<TOLShopEngineeringSpecifications> getSpecifications(HdShop obj, TOLShop po) {
+		List<TOLShopEngineeringSpecifications> vos = new ArrayList<>();
+		TOLShopEngineeringSpecifications shopEngineeringSpecifications;
+		for (HdConditionTemplate template : obj.getTemplates()) {
+			for (HdProjectCondition condition : template.getConditions()) {
+				List<HdProjectContent> contents = JSON.parseArray(condition.getContent(), HdProjectContent.class);
+				for (HdProjectContent content : contents) {
+					shopEngineeringSpecifications = new TOLShopEngineeringSpecifications();
+					shopEngineeringSpecifications.setCode(po.getCode());
+					convert(shopEngineeringSpecifications, content, condition);
+					vos.add(shopEngineeringSpecifications);
+				}
+			}
+		}
+		return vos;
+	}
+
+	private void convert(TOLShopEngineeringSpecifications po, TOLShopEngineeringSpecifications vo) {
+		po.setKey(vo.getKey());
+		po.setName(vo.getName());
+		po.setTitle(vo.getTitle());
+		po.setNumber(vo.getNumber());
+		po.setSpec(vo.getSpec());
+	}
 }

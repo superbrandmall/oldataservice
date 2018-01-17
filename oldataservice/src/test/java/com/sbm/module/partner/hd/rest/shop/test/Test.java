@@ -1,5 +1,12 @@
 package com.sbm.module.partner.hd.rest.shop.test;
 
+import com.alibaba.fastjson.JSON;
+import com.sbm.module.partner.hd.rest.base.domain.HdResult;
+import com.sbm.module.partner.hd.rest.base.domain.HdResultBody;
+import com.sbm.module.partner.hd.rest.shop.domain.HdConditionTemplate;
+import com.sbm.module.partner.hd.rest.shop.domain.HdProjectCondition;
+import com.sbm.module.partner.hd.rest.shop.domain.HdProjectContent;
+import com.sbm.module.partner.hd.rest.shop.domain.HdShop;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -9,6 +16,8 @@ import com.sbm.module.common.business.configuration.spring.SpringApplicationConf
 import com.sbm.module.common.business.util.SpringLog4jJUnit4ClassRunner;
 import com.sbm.module.partner.hd.rest.base.domain.QueryFilter;
 import com.sbm.module.partner.hd.rest.shop.biz.IHdShopService;
+
+import java.util.List;
 
 /*****************************************************************************/
 /**
@@ -34,8 +43,17 @@ public class Test {
 			QueryFilter queryFilter = new QueryFilter();
 			queryFilter.setPage(1);
 			queryFilter.getFilter().put("type", "shoppe");
-			
-			service.query(queryFilter);
+
+			HdResult<HdResultBody<HdShop>> result = service.query(queryFilter);
+
+			for (HdShop shop : result.getBody().getRecords()){
+				for (HdConditionTemplate template : shop.getTemplates()) {
+					for (HdProjectCondition condition : template.getConditions()) {
+						List<HdProjectContent> content = JSON.parseArray(condition.getContent(), HdProjectContent.class);
+						System.out.println(content.toString());
+					}
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
