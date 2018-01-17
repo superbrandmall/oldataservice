@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.sbm.module.onlineleasing.base.myfavourite.domain.TOLMyFavourite;
 import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
+import com.sbm.module.onlineleasing.base.shopengineeringimages.domain.TOLShopEngineeringImages;
+import com.sbm.module.onlineleasing.base.shopengineeringspecifications.domain.TOLShopEngineeringSpecifications;
 import com.sbm.module.onlineleasing.base.shopimages.domain.TOLShopImages;
 
 /*****************************************************************************/
@@ -21,6 +23,10 @@ public class ShopInfo {
 	private TOLShop shop;
 
 	private List<TOLShopImages> images;
+
+	private List<TOLShopEngineeringImages> engineeringImages;
+
+	private List<TOLShopEngineeringSpecifications> engineeringSpecifications;
 
 	private TOLMyFavourite myFavourite;
 
@@ -48,4 +54,19 @@ public class ShopInfo {
 		this.myFavourite = myFavourite;
 	}
 
+	public List<TOLShopEngineeringImages> getEngineeringImages() {
+		return engineeringImages;
+	}
+
+	public void setEngineeringImages(List<TOLShopEngineeringImages> engineeringImages) {
+		this.engineeringImages = engineeringImages;
+	}
+
+	public List<TOLShopEngineeringSpecifications> getEngineeringSpecifications() {
+		return engineeringSpecifications;
+	}
+
+	public void setEngineeringSpecifications(List<TOLShopEngineeringSpecifications> engineeringSpecifications) {
+		this.engineeringSpecifications = engineeringSpecifications;
+	}
 }

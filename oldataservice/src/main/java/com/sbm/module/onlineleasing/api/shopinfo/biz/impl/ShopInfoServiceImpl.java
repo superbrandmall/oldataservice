@@ -1,5 +1,7 @@
 package com.sbm.module.onlineleasing.api.shopinfo.biz.impl;
 
+import com.sbm.module.onlineleasing.base.shopengineeringimages.biz.ITOLShopEngineeringImagesService;
+import com.sbm.module.onlineleasing.base.shopengineeringspecifications.biz.ITOLShopEngineeringSpecificationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -44,11 +46,13 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 	@Autowired
 	private ITOLShopService shopService;
 	@Autowired
-	private ITOLModalityService modalityService;
-	@Autowired
 	private ITOLBrandService brandService;
 	@Autowired
 	private ITOLShopImagesService shopImagesService;
+	@Autowired
+	private ITOLShopEngineeringImagesService shopEngineeringImagesService;
+	@Autowired
+	private ITOLShopEngineeringSpecificationsService shopEngineeringSpecificationsService;
 
 	public void getShopInfo(ShopInfo shopInfo) {
 		// 商铺信息
@@ -74,6 +78,10 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 			}
 			// 商铺图片
 			shopInfo.setImages(shopImagesService.findAllByCode(shop.getCode()));
+			// 工程图
+			shopInfo.setEngineeringImages(shopEngineeringImagesService.findAllByCode(shop.getCode()));
+			// 工程条件
+			shopInfo.setEngineeringSpecifications(shopEngineeringSpecificationsService.findAllByCode(shop.getCode()));
 		}
 		shopInfo.setShop(shop);
 	}
