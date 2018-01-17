@@ -23,7 +23,7 @@ public class TOLShopEngineeringSpecifications extends BaseEntity {
 
 	private String code;
 
-	private String key;
+	private String keyword;
 
 	private String name;
 
@@ -41,12 +41,12 @@ public class TOLShopEngineeringSpecifications extends BaseEntity {
 		this.code = code;
 	}
 
-	public String getKey() {
-		return key;
+	public String getKeyword() {
+		return keyword;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 
 	public String getName() {

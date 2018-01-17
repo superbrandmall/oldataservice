@@ -99,10 +99,10 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 		HdResult<HdResultBody<HdShop>> result = query(queryFilter);
 		// 遍历查询
 		for (int i = 1; i < result.getBody().getPageCount(); i++) {
-			// TODO
-			if (i >= 3) {
-				break;
-			}
+//			// TODO
+//			if (i >= 3) {
+//				break;
+//			}
 			queryFilter.setPage(i);
 			query(queryFilter);
 		}
@@ -332,7 +332,7 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 	 * @param condition
 	 */
 	private void convert(TOLShopEngineeringSpecifications shopEngineeringSpecifications, HdProjectContent obj, HdProjectCondition condition ) {
-		shopEngineeringSpecifications.setKey(condition.getKey());
+		shopEngineeringSpecifications.setKeyword(condition.getKey());
 		shopEngineeringSpecifications.setName(condition.getName());
 		shopEngineeringSpecifications.setTitle(obj.getTitle());
 		shopEngineeringSpecifications.setNumber(obj.getNumber());
@@ -357,7 +357,7 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 	}
 
 	private void convert(TOLShopEngineeringSpecifications po, TOLShopEngineeringSpecifications vo) {
-		po.setKey(vo.getKey());
+		po.setKeyword(vo.getKeyword());
 		po.setName(vo.getName());
 		po.setTitle(vo.getTitle());
 		po.setNumber(vo.getNumber());
