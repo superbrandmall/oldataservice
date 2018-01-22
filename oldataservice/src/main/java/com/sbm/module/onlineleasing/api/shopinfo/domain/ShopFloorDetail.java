@@ -8,6 +8,8 @@ public class ShopFloorDetail {
 
 	private Integer shopState;
 
+	private String unit;
+
 	private String brandName;
 
 	private String coords;
@@ -46,6 +48,14 @@ public class ShopFloorDetail {
 
 	public String getCoords() {
 		return coords;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 
 	public void setCoords(String coords) {

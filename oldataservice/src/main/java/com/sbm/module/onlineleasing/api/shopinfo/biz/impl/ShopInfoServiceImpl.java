@@ -135,6 +135,8 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 			detail.setState(shop.getState());
 			// shopState
 			detail.setShopState(shop.getShopState());
+			// 单元
+			detail.setUnit(shop.getUnit());
 			// 设置品牌名称
 			TOLBrand brand = brandService.findByCode(shop.getBrandCode());
 			if (null != brand) {
