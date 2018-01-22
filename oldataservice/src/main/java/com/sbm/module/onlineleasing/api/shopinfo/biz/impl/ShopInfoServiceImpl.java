@@ -1,5 +1,10 @@
 package com.sbm.module.onlineleasing.api.shopinfo.biz.impl;
 
+import com.sbm.module.common.business.util.ParamsUtil;
+import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopFloorDetail;
+import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopFloorInfo;
+import com.sbm.module.onlineleasing.base.shopcoords.biz.ITOLShopCoordsService;
+import com.sbm.module.onlineleasing.base.shopcoords.domain.TOLShopCoords;
 import com.sbm.module.onlineleasing.base.shopengineeringimages.biz.ITOLShopEngineeringImagesService;
 import com.sbm.module.onlineleasing.base.shopengineeringspecifications.biz.ITOLShopEngineeringSpecificationsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +23,9 @@ import com.sbm.module.onlineleasing.base.myfavourite.biz.ITOLMyFavouriteService;
 import com.sbm.module.onlineleasing.base.shop.biz.ITOLShopService;
 import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
 import com.sbm.module.onlineleasing.base.shopimages.biz.ITOLShopImagesService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /*****************************************************************************/
 /* 　　　　　　(C) Super Brand Mail Inc. 2014     　　　                     */
@@ -53,6 +61,8 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 	private ITOLShopEngineeringImagesService shopEngineeringImagesService;
 	@Autowired
 	private ITOLShopEngineeringSpecificationsService shopEngineeringSpecificationsService;
+	@Autowired
+	private ITOLShopCoordsService shopCoordsService;
 
 	public void getShopInfo(ShopInfo shopInfo) {
 		// 商铺信息
@@ -109,4 +119,35 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 		}
 	}
 
+	/*****************************************************************/
+
+	@Override
+	public void getShopFloorInfo(ShopFloorInfo shopFloorInfo) {
+		List<ShopFloorDetail> details = new ArrayList<>();
+		ShopFloorDetail detail;
+		ParamsUtil.canNotBeEmpty(shopFloorInfo.getFloorCode());
+		List<TOLShop> shops = shopService.findAllByFloorCode(shopFloorInfo.getFloorCode());
+		for (TOLShop shop : shops) {
+			detail = new ShopFloorDetail();
+			// shopCode
+			detail.setCode(shop.getCode());
+			// state
+			detail.setState(shop.getState());
+			// shopState
+			detail.setShopState(shop.getShopState());
+			// 设置品牌名称
+			TOLBrand brand = brandService.findByCode(shop.getBrandCode());
+			if (null != brand) {
+				detail.setBrandName(brand.getName());
+			}
+			// coords
+			TOLShopCoords coords = shopCoordsService.findByCode(shop.getCode());
+			if (null != coords) {
+				detail.setCoords(coords.getCoords());
+			}
+
+			details.add(detail);
+		}
+		shopFloorInfo.setDetails(details);
+	}
 }

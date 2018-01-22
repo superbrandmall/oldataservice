@@ -1,5 +1,6 @@
 package com.sbm.module.onlineleasing.api.shopinfo.controller;
 
+import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopFloorInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -60,6 +61,24 @@ public class ShopInfoController extends BaseController {
 		JsonContainer jsonContainer = getJsonContainer();
 		service.getShopInfoBeforeLogin(shopInfo);
 		setSuccessMessage(jsonContainer, shopInfo);
+		return jsonContainer;
+	}
+
+	/**
+	 *
+	 * getShopFloorInfo:getShopFloorInfo
+	 *
+	 * @author junkai.zhang
+	 * @param shopFloorInfo
+	 * @return
+	 */
+	@Authorization
+	@RequestMapping(value = "/getShopFloorInfo")
+	@ResponseBody
+	public JsonContainer getShopFloorInfo(@RequestBody ShopFloorInfo shopFloorInfo) {
+		JsonContainer jsonContainer = getJsonContainer();
+		service.getShopFloorInfo(shopFloorInfo);
+		setSuccessMessage(jsonContainer, shopFloorInfo);
 		return jsonContainer;
 	}
 }

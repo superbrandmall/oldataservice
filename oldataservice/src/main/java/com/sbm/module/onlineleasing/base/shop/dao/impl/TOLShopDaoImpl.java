@@ -81,7 +81,8 @@ public class TOLShopDaoImpl extends BaseHibernateDaoImpl<TOLShop> implements ITO
 		// 取除面积为空（异常数据）
 		sb.append(" and area is not null ");
 		sb.append(" and hdState = 'using' ");
-
+		// 未锁定
+		sb.append(" and state = 1 ");
 		List<TOLShop> list = find(sb.toString());
 		return list;
 	}
@@ -107,6 +108,17 @@ public class TOLShopDaoImpl extends BaseHibernateDaoImpl<TOLShop> implements ITO
 		sb.append(" order by id desc ");
 		data.setHql(sb.toString());
 		return data;
+	}
+
+	@Override
+	public List<TOLShop> findAllByFloorCode(String floorCode) {
+		StringBuffer sb = new StringBuffer("from TOLShop where 1=1 ");
+		sb.append(" and floorCode = ? ");
+		sb.append(" and hdState = 'using' ");
+		// 未锁定
+		sb.append(" and state = 1 ");
+		List<TOLShop> list = find(sb.toString(), floorCode);
+		return list;
 	}
 
 	public List<TOLShop> findCountGroupByMall(String mallCode) {
@@ -149,4 +161,6 @@ public class TOLShopDaoImpl extends BaseHibernateDaoImpl<TOLShop> implements ITO
 		List<TOLShop> list = find(sb.toString(), mallCode, buildingCode, floorCode);
 		return list;
 	}
+
+
 }

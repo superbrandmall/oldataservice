@@ -29,6 +29,8 @@ public interface ITOLShopService extends IDaoSupportService<TOLShop> {
 
 	Pagination<TOLShop> findAllByConditionPage(TOLShop obj);
 
+	List<TOLShop> findAllByFloorCode(String floorCode);
+
 	/**
 	 * 
 	 * saveShop:保存shop

@@ -1,5 +1,6 @@
 package com.sbm.module.onlineleasing.api.shopinfo.biz;
 
+import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopFloorInfo;
 import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopInfo;
 
 /*****************************************************************************/
@@ -21,7 +22,7 @@ public interface IShopInfoService {
 	 * @author junkai.zhang
 	 * @param shopInfo
 	 */
-	public void getShopInfo(ShopInfo shopInfo);
+	void getShopInfo(ShopInfo shopInfo);
 
 	/**
 	 * 
@@ -30,6 +31,12 @@ public interface IShopInfoService {
 	 * @author junkai.zhang
 	 * @param shopInfo
 	 */
-	public void getShopInfoBeforeLogin(ShopInfo shopInfo);
+	void getShopInfoBeforeLogin(ShopInfo shopInfo);
+
+	/**
+	 * 通过楼层获取列表
+	 * @param shopFloorInfo
+	 */
+	void getShopFloorInfo(ShopFloorInfo shopFloorInfo);
 
 }

@@ -133,7 +133,7 @@
 			}
 		};
 		 */
-		///*
+		/*
 		var url = "${base}/ol/api/searchshop/details";
 		var map = { 
 			vo : {	     
@@ -148,7 +148,7 @@
 				] 
 			}
 		};  
-		//*/
+		*/
 		/*
 		var url = "${base}/ol/api/searchshop/histories";
 		var map = {  
@@ -445,6 +445,12 @@
 			}
 		};
 		 */
+		///*
+		var url = "${base}/ol/api/shopinfo/getShopFloorInfo";
+		var map = {
+			floorCode : "OLFLOOR171212000014"
+		};
+		//*/
 		/*
 		var url = "${base}/ol/api/userinfo/check/exist/mobile";
 		var map = {
