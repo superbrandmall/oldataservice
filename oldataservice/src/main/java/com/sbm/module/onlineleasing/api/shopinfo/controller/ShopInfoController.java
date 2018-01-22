@@ -72,7 +72,6 @@ public class ShopInfoController extends BaseController {
 	 * @param shopFloorInfo
 	 * @return
 	 */
-	@Authorization
 	@RequestMapping(value = "/getShopFloorInfo")
 	@ResponseBody
 	public JsonContainer getShopFloorInfo(@RequestBody ShopFloorInfo shopFloorInfo) {
