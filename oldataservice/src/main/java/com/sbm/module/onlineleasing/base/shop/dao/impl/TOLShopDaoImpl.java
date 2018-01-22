@@ -115,8 +115,6 @@ public class TOLShopDaoImpl extends BaseHibernateDaoImpl<TOLShop> implements ITO
 		StringBuffer sb = new StringBuffer("from TOLShop where 1=1 ");
 		sb.append(" and floorCode = ? ");
 		sb.append(" and hdState = 'using' ");
-		// 未锁定
-		sb.append(" and state = 1 ");
 		List<TOLShop> list = find(sb.toString(), floorCode);
 		return list;
 	}
