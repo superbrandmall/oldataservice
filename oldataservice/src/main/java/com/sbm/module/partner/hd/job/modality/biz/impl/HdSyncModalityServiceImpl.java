@@ -68,6 +68,7 @@ public class HdSyncModalityServiceImpl extends HdSyncServiceImpl implements ISyn
 		po.setLv(getLv(obj.getCode()));
 		po.setHdUuid(obj.getHdUuid());
 		po.setHdLevelid(obj.getLevelid());
+		po.setRemark(obj.getRemark());
 	}
 
 	private String getLv(String code) {

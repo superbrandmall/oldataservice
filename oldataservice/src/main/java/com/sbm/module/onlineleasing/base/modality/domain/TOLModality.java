@@ -34,6 +34,8 @@ public class TOLModality extends BaseEntity {
 
 	private String hdLevelid;
 
+	private String remark;
+
 	@Transient
 	private List<TOLModality> list;
 
@@ -93,4 +95,11 @@ public class TOLModality extends BaseEntity {
 		this.hdLevelid = hdLevelid;
 	}
 
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 }

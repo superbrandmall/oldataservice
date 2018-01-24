@@ -1,5 +1,6 @@
 package com.sbm.module.onlineleasing.api.baseinfo.modality.test;
 
+import com.sbm.module.onlineleasing.base.modality.biz.ITOLModalityService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -29,9 +30,14 @@ public class Test {
 	@Autowired
 	private IModalityService service;
 
+	@Autowired
+	private ITOLModalityService service1;
+
 	@org.junit.Test
 	public void test() {
 		try {
+			service1.refreshCache();
+
 			ModalityVo vo = new ModalityVo();
 			service.getModalityList(vo);
 			System.out.println(JSON.toJSON(vo));
