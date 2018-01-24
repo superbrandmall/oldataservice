@@ -445,12 +445,12 @@
 			}
 		};
 		 */
-		///*
+		/*
 		var url = "${base}/ol/api/shopinfo/getShopFloorInfo";
 		var map = {
 			floorCode : "OLFLOOR171212000014"
 		};
-		//*/
+		*/
 		/*
 		var url = "${base}/ol/api/userinfo/check/exist/mobile";
 		var map = {
@@ -532,12 +532,12 @@
 			}
 		};
 		*/
-		/*
+		///*
 		var url = "${base}/ol/api/baseinfo/modality/getModalityList";
 		var map = {  
 			     
 		};
-		 */
+		// */
 		/*
 		var url = "${base}/ol/api/interactive/merchant/receive";
 		var map = {  
