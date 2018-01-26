@@ -125,8 +125,7 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 	public void getShopFloorInfo(ShopFloorInfo shopFloorInfo) {
 		List<ShopFloorDetail> details = new ArrayList<>();
 		ShopFloorDetail detail;
-		ParamsUtil.canNotBeEmpty(shopFloorInfo.getFloorCode());
-		List<TOLShop> shops = shopService.findAllByFloorCode(shopFloorInfo.getFloorCode());
+		List<TOLShop> shops = shopService.findAllByFloorCodes(shopFloorInfo.getFloorCodes());
 		for (TOLShop shop : shops) {
 			detail = new ShopFloorDetail();
 			// shopCode

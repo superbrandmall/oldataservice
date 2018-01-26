@@ -77,8 +77,8 @@ public class TOLShopServiceImpl extends DaoSupportServiceImpl<TOLShop> implement
 	}
 
 	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
-	public List<TOLShop> findAllByFloorCode(String floorCode) {
-		return dao.findAllByFloorCode(floorCode);
+	public List<TOLShop> findAllByFloorCodes(List<String> floorCodes) {
+		return dao.findAllByFloorCodes(floorCodes);
 	}
 
 	public void saveShop(TOLShop obj) {

@@ -243,6 +243,11 @@ public class SubmitBidServiceImpl extends BusinessServiceImpl implements ISubmit
 	/**************************************************************************/
 
 	public boolean isStandard(BidInfo bidInfo) {
+		// 目前暂定都是非标合同
+		if (1 == 1) {
+			return false;
+		}
+
 		TOLShop shop = bidInfo.getShop();
 		// 出价标准
 		TOLMallBidStandard mallBidStandard = mallBidStandardService.findByCode(shop.getMallCode());

@@ -111,11 +111,11 @@ public class TOLShopDaoImpl extends BaseHibernateDaoImpl<TOLShop> implements ITO
 	}
 
 	@Override
-	public List<TOLShop> findAllByFloorCode(String floorCode) {
+	public List<TOLShop> findAllByFloorCodes(List<String> floorCodes) {
 		StringBuffer sb = new StringBuffer("from TOLShop where 1=1 ");
-		sb.append(" and floorCode = ? ");
+		sb.append(" and floorCode in ").append(ListUtil.strList2HQLStr(floorCodes));
 		sb.append(" and hdState = 'using' ");
-		List<TOLShop> list = find(sb.toString(), floorCode);
+		List<TOLShop> list = find(sb.toString());
 		return list;
 	}
 

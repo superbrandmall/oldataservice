@@ -33,7 +33,7 @@ public interface ITOLShopDao extends IBaseHibernateDao<TOLShop> {
 
 	Pagination<TOLShop> findAllByConditionPage(TOLShop obj);
 
-	List<TOLShop> findAllByFloorCode(String floorCode);
+	List<TOLShop> findAllByFloorCodes(List<String> floorCodes);
 
 	List<TOLShop> findCountGroupByMall(String mallCode);
 	

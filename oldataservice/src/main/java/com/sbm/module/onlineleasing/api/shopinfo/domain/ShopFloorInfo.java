@@ -4,16 +4,16 @@ import java.util.List;
 
 public class ShopFloorInfo {
 
-	private String floorCode;
+	private List<String> floorCodes;
 
 	private List<ShopFloorDetail> details;
 
-	public String getFloorCode() {
-		return floorCode;
+	public List<String> getFloorCodes() {
+		return floorCodes;
 	}
 
-	public void setFloorCode(String floorCode) {
-		this.floorCode = floorCode;
+	public void setFloorCodes(List<String> floorCodes) {
+		this.floorCodes = floorCodes;
 	}
 
 	public List<ShopFloorDetail> getDetails() {

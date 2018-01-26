@@ -445,12 +445,12 @@
 			}
 		};
 		 */
-		/*
+		///*
 		var url = "${base}/ol/api/shopinfo/getShopFloorInfo";
 		var map = {
-			floorCode : "OLFLOOR171212000014"
+			floorCodes : ["OLFLOOR171212000014", "OLFLOOR171212000015"]
 		};
-		*/
+		//*/
 		/*
 		var url = "${base}/ol/api/userinfo/check/exist/mobile";
 		var map = {
@@ -704,11 +704,11 @@
 			code : "OLMALL170717000001"	
 		};
 		*/
-		///*
+		/*
 		var url = "${base}/ol/api/baseinfo/mallinfo/findAllOrderByPosition";
 		var map = {
 		};
-		//*/
+		*/
 		/*
 		var url = "${base}/ol/api/baseinfo/floorinfo/getFloorInfo";
 		var map = {  
