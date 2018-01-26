@@ -36,6 +36,12 @@ public class TOLMallDaoImpl extends BaseHibernateDaoImpl<TOLMall> implements ITO
 		return list;
 	}
 
+	public List<TOLMall> findAllOrderByPosition() {
+		String hql = "from TOLMall where hdState = 'using' order by position asc";
+		List<TOLMall> list = find(hql);
+		return list;
+	}
+
 	public TOLMall findByCode(String code) {
 		StringBuffer sb = new StringBuffer("from TOLMall where 1=1 ");
 		sb.append(" and code = ?");

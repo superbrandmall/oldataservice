@@ -532,12 +532,12 @@
 			}
 		};
 		*/
-		///*
+		/*
 		var url = "${base}/ol/api/baseinfo/modality/getModalityList";
 		var map = {  
 			     
 		};
-		// */
+		*/
 		/*
 		var url = "${base}/ol/api/interactive/merchant/receive";
 		var map = {  
@@ -704,6 +704,11 @@
 			code : "OLMALL170717000001"	
 		};
 		*/
+		///*
+		var url = "${base}/ol/api/baseinfo/mallinfo/findAllOrderByPosition";
+		var map = {
+		};
+		//*/
 		/*
 		var url = "${base}/ol/api/baseinfo/floorinfo/getFloorInfo";
 		var map = {  

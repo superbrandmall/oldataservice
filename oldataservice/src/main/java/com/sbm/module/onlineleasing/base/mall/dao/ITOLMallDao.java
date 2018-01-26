@@ -35,6 +35,8 @@ public interface ITOLMallDao extends IBaseHibernateDao<TOLMall> {
 
 	List<TOLMall> findAll();
 
+	List<TOLMall> findAllOrderByPosition();
+
 	TOLMall findByCode(String code);
 
 	TOLMall findByHdUuid(String hdUuid);

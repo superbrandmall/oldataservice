@@ -153,4 +153,12 @@ public class MallInfoServiceImpl extends BusinessServiceImpl implements IMallInf
 		vo.setMallInfo(get(vo.getCode()));
 	}
 
+	/**************************************************************************************************/
+
+	@Override
+	public void findAllOrderByPosition(MallInfoVo vo) {
+		// 查询所有mall
+		List<TOLMall> malls = mallService.findAllOrderByPosition();
+		vo.setMalls(malls);
+	}
 }

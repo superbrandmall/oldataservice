@@ -1,6 +1,11 @@
 package com.sbm.module.onlineleasing.api.baseinfo.mallinfo.domain;
 
 /*****************************************************************************/
+
+import com.sbm.module.onlineleasing.base.mall.domain.TOLMall;
+
+import java.util.List;
+
 /**
  * Project Name:oldataservice<br/>
  * Package Name:com.sbm.module.onlineleasing.api.mallinfo.domain<br/>
@@ -15,6 +20,8 @@ public class MallInfoVo {
 	private String code;
 
 	private MallInfo mallInfo;
+
+	public List<TOLMall> malls;
 
 	public String getCode() {
 		return code;
@@ -32,4 +39,11 @@ public class MallInfoVo {
 		this.mallInfo = mallInfo;
 	}
 
+	public List<TOLMall> getMalls() {
+		return malls;
+	}
+
+	public void setMalls(List<TOLMall> malls) {
+		this.malls = malls;
+	}
 }

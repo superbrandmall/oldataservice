@@ -52,6 +52,12 @@ public class TOLMallServiceImpl extends DaoSupportServiceImpl<TOLMall> implement
 	}
 
 	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+	public List<TOLMall> findAllOrderByPosition() {
+		List<TOLMall> list = dao.findAllOrderByPosition();
+		return list;
+	}
+
+	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 	public TOLMall findByCode(String code) {
 		String valuer = (String) redisService.get(RedisConstant.PREFIX_MALL + code);
 		if (StringUtils.isNotBlank(valuer)) {

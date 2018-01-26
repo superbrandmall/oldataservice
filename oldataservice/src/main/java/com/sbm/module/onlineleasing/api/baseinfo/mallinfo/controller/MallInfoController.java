@@ -45,4 +45,16 @@ public class MallInfoController extends BaseController {
 		return jsonContainer;
 	}
 
+	/**
+	 * 获取所有mall
+	 * @return
+	 */
+	@RequestMapping(value = "/findAllOrderByPosition")
+	@ResponseBody
+	public JsonContainer findAllOrderByPosition(@RequestBody MallInfoVo vo) {
+		JsonContainer jsonContainer = getJsonContainer();
+		service.findAllOrderByPosition(vo);
+		setSuccessMessage(jsonContainer, vo);
+		return jsonContainer;
+	}
 }

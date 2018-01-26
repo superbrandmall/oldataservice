@@ -2,6 +2,7 @@ package com.sbm.module.onlineleasing.base.mall.domain;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -36,6 +37,13 @@ public class TOLMall extends BaseEntity {
 	private String hdUuid;
 
 	private String hdCode;
+
+	private Integer position;
+
+	@Column(columnDefinition = "text")
+	private String img;
+
+	private String hdState;
 
 	public String getCode() {
 		return code;
@@ -101,4 +109,27 @@ public class TOLMall extends BaseEntity {
 		this.hdUuid = hdUuid;
 	}
 
+	public Integer getPosition() {
+		return position;
+	}
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public String getHdState() {
+		return hdState;
+	}
+
+	public void setHdState(String hdState) {
+		this.hdState = hdState;
+	}
 }

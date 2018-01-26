@@ -26,6 +26,8 @@ public interface ITOLMallService extends IDaoSupportService<TOLMall> {
 
 	List<TOLMall> findAll();
 
+	List<TOLMall> findAllOrderByPosition();
+
 	TOLMall findByCode(String code);
 	
 	TOLMall findByHdUuid(String hdUuid);

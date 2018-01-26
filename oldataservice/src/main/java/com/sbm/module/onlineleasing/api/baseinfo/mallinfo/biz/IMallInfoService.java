@@ -17,7 +17,7 @@ import com.sbm.module.onlineleasing.api.baseinfo.mallinfo.domain.MallInfoVo;
  */
 public interface IMallInfoService {
 
-	public List<MallInfo> findAll();
+	List<MallInfo> findAll();
 
 	/**
 	 * 
@@ -25,10 +25,12 @@ public interface IMallInfoService {
 	 * 
 	 * @author junkai.zhang
 	 */
-	public void refreshCache();
+	void refreshCache();
 
-	public MallInfo get(String code);
+	MallInfo get(String code);
 
-	public void getMallInfo(MallInfoVo vo);
+	void getMallInfo(MallInfoVo vo);
+
+	void findAllOrderByPosition(MallInfoVo vo);
 
 }
