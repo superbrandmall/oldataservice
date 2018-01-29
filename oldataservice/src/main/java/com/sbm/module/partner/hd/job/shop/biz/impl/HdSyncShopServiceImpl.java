@@ -306,6 +306,9 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 			}
 		}
 
+		// 铺位类型
+		po.setSubType(obj.getSubType());
+
 	}
 
 	/**

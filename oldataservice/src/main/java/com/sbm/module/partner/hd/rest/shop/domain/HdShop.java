@@ -50,6 +50,8 @@ public class HdShop {
 
 	private List<HdConditionTemplate> templates;
 
+	private String subType;
+
 	public String getUuid() {
 		return uuid;
 	}
@@ -169,5 +171,13 @@ public class HdShop {
 
 	public void setTemplates(List<HdConditionTemplate> templates) {
 		this.templates = templates;
+	}
+
+	public String getSubType() {
+		return subType;
+	}
+
+	public void setSubType(String subType) {
+		this.subType = subType;
 	}
 }

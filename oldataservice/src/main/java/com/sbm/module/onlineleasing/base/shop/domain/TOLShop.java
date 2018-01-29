@@ -69,6 +69,8 @@ public class TOLShop extends BaseEntity {
 	@Column(columnDefinition = "text")
 	private String vr;
 
+	private String subType;
+
 	@Transient
 	private String firstImage;
 
@@ -266,5 +268,13 @@ public class TOLShop extends BaseEntity {
 
 	public void setVr(String vr) {
 		this.vr = vr;
+	}
+
+	public String getSubType() {
+		return subType;
+	}
+
+	public void setSubType(String subType) {
+		this.subType = subType;
 	}
 }
