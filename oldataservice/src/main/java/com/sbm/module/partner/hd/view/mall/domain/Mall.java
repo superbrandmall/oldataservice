@@ -56,6 +56,11 @@ public class Mall {
 	 */
 	private String description;
 
+	/**
+	 * 状态
+	 */
+	private String state;
+
 	public String getHdUuid() {
 		return hdUuid;
 	}
@@ -112,4 +117,11 @@ public class Mall {
 		this.description = description;
 	}
 
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
 }

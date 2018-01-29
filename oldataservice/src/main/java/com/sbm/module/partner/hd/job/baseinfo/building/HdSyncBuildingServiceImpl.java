@@ -91,6 +91,8 @@ public class HdSyncBuildingServiceImpl extends HdSyncServiceImpl implements ISyn
 		po.setHdUuid(obj.getHdUuid());
 		// 海鼎编码
 		po.setHdCode(obj.getHdCode());
+		// 海鼎状态
+		po.setHdState(obj.getState());
 	}
 
 }

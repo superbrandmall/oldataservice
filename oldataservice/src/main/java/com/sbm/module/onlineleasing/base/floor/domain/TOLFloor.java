@@ -37,6 +37,8 @@ public class TOLFloor extends BaseEntity {
 
 	private String hdCode;
 
+	private String hdState;
+
 	public String getCode() {
 		return code;
 	}
@@ -75,6 +77,14 @@ public class TOLFloor extends BaseEntity {
 
 	public void setLeasingArea(BigDecimal leasingArea) {
 		this.leasingArea = leasingArea;
+	}
+
+	public String getHdState() {
+		return hdState;
+	}
+
+	public void setHdState(String hdState) {
+		this.hdState = hdState;
 	}
 
 	public String getDescription() {

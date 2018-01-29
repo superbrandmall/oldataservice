@@ -37,6 +37,8 @@ public class TOLBuilding extends BaseEntity {
 
 	private String hdCode;
 
+	private String hdState;
+
 	public String getCode() {
 		return code;
 	}
@@ -101,4 +103,11 @@ public class TOLBuilding extends BaseEntity {
 		this.hdUuid = hdUuid;
 	}
 
+	public String getHdState() {
+		return hdState;
+	}
+
+	public void setHdState(String hdState) {
+		this.hdState = hdState;
+	}
 }
