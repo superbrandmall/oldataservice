@@ -45,6 +45,10 @@ public class TOLMall extends BaseEntity {
 
 	private String hdState;
 
+	private String mallNameEng;
+
+	private String locationEng;
+
 	public String getCode() {
 		return code;
 	}
@@ -131,5 +135,21 @@ public class TOLMall extends BaseEntity {
 
 	public void setHdState(String hdState) {
 		this.hdState = hdState;
+	}
+
+	public String getMallNameEng() {
+		return mallNameEng;
+	}
+
+	public void setMallNameEng(String mallNameEng) {
+		this.mallNameEng = mallNameEng;
+	}
+
+	public String getLocationEng() {
+		return locationEng;
+	}
+
+	public void setLocationEng(String locationEng) {
+		this.locationEng = locationEng;
 	}
 }
