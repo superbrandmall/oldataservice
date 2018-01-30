@@ -3,6 +3,7 @@ package com.sbm.module.onlineleasing.api.myfavourite.biz.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sbm.module.onlineleasing.base.mall.biz.ITOLMallService;
 import com.sbm.module.onlineleasing.base.shopimages.biz.ITOLShopImagesService;
 import com.sbm.module.onlineleasing.base.shopimages.domain.TOLShopImages;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,8 @@ public class MyFavouriteServiceImpl extends BusinessServiceImpl implements IMyFa
 	private ITOLShopService shopService;
 	@Autowired
 	private ITOLShopImagesService shopImagesService;
+	@Autowired
+	private ITOLMallService mallService;
 
 	public void getDetails(MyFavourite myFavourite) {
 		Pagination<TOLMyFavourite> pagination = service.findAllByUserCodePage(myFavourite.getMyFavourite());
@@ -84,6 +87,9 @@ public class MyFavouriteServiceImpl extends BusinessServiceImpl implements IMyFa
 		List<TOLShopImages> shopImages = shopImagesService.findAllByCode(shop.getCode());
 		if (null != shopImages && !shopImages.isEmpty()) {
 			shop.setFirstImage(shopImages.get(0).getImage());
+		} else {
+			// 如果商铺图片不存在，返回mall图片
+			shop.setFirstImage(mallService.findByCode(shop.getMallCode()).getImg());
 		}
 		return shop;
 	}

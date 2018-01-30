@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.sbm.module.common.base.constant.CommonConstant;
 import com.sbm.module.onlineleasing.api.bid.event.SubmitBidEvent;
+import com.sbm.module.onlineleasing.base.mall.biz.ITOLMallService;
 import com.sbm.module.onlineleasing.base.shopimages.biz.ITOLShopImagesService;
 import com.sbm.module.onlineleasing.base.shopimages.domain.TOLShopImages;
 import org.apache.commons.lang3.StringUtils;
@@ -101,6 +102,8 @@ public class BidInfoServiceImpl extends BusinessServiceImpl implements IBidInfoS
 	private ITOLModalityService modalityService;
 	@Autowired
 	private ITOLMallBidStandardService mallBidStandardService;
+	@Autowired
+	private ITOLMallService mallService;
 
 	/**********************************************************/
 
@@ -361,6 +364,9 @@ public class BidInfoServiceImpl extends BusinessServiceImpl implements IBidInfoS
 		List<TOLShopImages> shopImages = shopImagesService.findAllByCode(shop.getCode());
 		if (null != shopImages && !shopImages.isEmpty()) {
 			vo.setFirstImage(shopImages.get(0).getImage());
+		} else {
+			// 如果商铺图片不存在，返回mall图片
+			vo.setFirstImage(mallService.findByCode(shop.getMallCode()).getImg());
 		}
 		// 品牌名称
 		vo.setBrandName(brandService.findByCode(bid.getBrandCode()).getName());

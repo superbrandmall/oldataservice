@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import com.sbm.module.onlineleasing.base.mall.biz.ITOLMallService;
 import com.sbm.module.onlineleasing.base.shopimages.biz.ITOLShopImagesService;
 import com.sbm.module.onlineleasing.base.shopimages.domain.TOLShopImages;
 import org.apache.commons.lang3.StringUtils;
@@ -60,6 +61,9 @@ public class ShopScoreServiceImpl extends BusinessServiceImpl implements IShopSc
 	private ITOLBrandService brandService;
 	@Autowired
 	private ITOLShopImagesService shopImagesService;
+	@Autowired
+	private ITOLMallService mallService;
+
 
 	@Value("#{propertiesReader['application.ShopScoreServiceImpl.max']}")
 	private String max;
@@ -104,6 +108,9 @@ public class ShopScoreServiceImpl extends BusinessServiceImpl implements IShopSc
 			List<TOLShopImages> shopImages = shopImagesService.findAllByCode(shopScore.getShop().getCode());
 			if (null != shopImages && !shopImages.isEmpty()) {
 				shopScore.getShop().setFirstImage(shopImages.get(0).getImage());
+			} else {
+				// 如果商铺图片不存在，返回mall图片
+				shopScore.getShop().setFirstImage(mallService.findByCode(shopScore.getShop().getMallCode()).getImg());
 			}
 		}
 	}
