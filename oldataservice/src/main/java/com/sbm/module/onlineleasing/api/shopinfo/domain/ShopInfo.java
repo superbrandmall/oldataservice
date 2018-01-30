@@ -2,6 +2,7 @@ package com.sbm.module.onlineleasing.api.shopinfo.domain;
 
 import java.util.List;
 
+import com.sbm.module.onlineleasing.base.mall.domain.TOLMall;
 import com.sbm.module.onlineleasing.base.myfavourite.domain.TOLMyFavourite;
 import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
 import com.sbm.module.onlineleasing.base.shopengineeringimages.domain.TOLShopEngineeringImages;
@@ -29,6 +30,8 @@ public class ShopInfo {
 	private List<TOLShopEngineeringSpecifications> engineeringSpecifications;
 
 	private TOLMyFavourite myFavourite;
+
+	private TOLMall mall;
 
 	public TOLShop getShop() {
 		return shop;
@@ -68,5 +71,13 @@ public class ShopInfo {
 
 	public void setEngineeringSpecifications(List<TOLShopEngineeringSpecifications> engineeringSpecifications) {
 		this.engineeringSpecifications = engineeringSpecifications;
+	}
+
+	public TOLMall getMall() {
+		return mall;
+	}
+
+	public void setMall(TOLMall mall) {
+		this.mall = mall;
 	}
 }

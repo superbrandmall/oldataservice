@@ -1,28 +1,26 @@
 package com.sbm.module.onlineleasing.api.shopinfo.biz.impl;
 
-import com.sbm.module.common.business.util.ParamsUtil;
+import com.sbm.module.common.business.biz.impl.BusinessServiceImpl;
+import com.sbm.module.common.business.constant.TransactionConstant;
+import com.sbm.module.onlineleasing.api.shopinfo.biz.IShopInfoService;
 import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopFloorDetail;
 import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopFloorInfo;
+import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopInfo;
+import com.sbm.module.onlineleasing.base.brand.biz.ITOLBrandService;
+import com.sbm.module.onlineleasing.base.brand.domain.TOLBrand;
+import com.sbm.module.onlineleasing.base.mall.biz.ITOLMallService;
+import com.sbm.module.onlineleasing.base.myfavourite.biz.ITOLMyFavouriteService;
+import com.sbm.module.onlineleasing.base.shop.biz.ITOLShopService;
+import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
 import com.sbm.module.onlineleasing.base.shopcoords.biz.ITOLShopCoordsService;
 import com.sbm.module.onlineleasing.base.shopcoords.domain.TOLShopCoords;
 import com.sbm.module.onlineleasing.base.shopengineeringimages.biz.ITOLShopEngineeringImagesService;
 import com.sbm.module.onlineleasing.base.shopengineeringspecifications.biz.ITOLShopEngineeringSpecificationsService;
+import com.sbm.module.onlineleasing.base.shopimages.biz.ITOLShopImagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.sbm.module.common.business.biz.impl.BusinessServiceImpl;
-import com.sbm.module.common.business.constant.TransactionConstant;
-import com.sbm.module.onlineleasing.api.shopinfo.biz.IShopInfoService;
-import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopInfo;
-import com.sbm.module.onlineleasing.base.brand.biz.ITOLBrandService;
-import com.sbm.module.onlineleasing.base.brand.domain.TOLBrand;
-import com.sbm.module.onlineleasing.base.modality.biz.ITOLModalityService;
-import com.sbm.module.onlineleasing.base.myfavourite.biz.ITOLMyFavouriteService;
-import com.sbm.module.onlineleasing.base.shop.biz.ITOLShopService;
-import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
-import com.sbm.module.onlineleasing.base.shopimages.biz.ITOLShopImagesService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +61,8 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 	private ITOLShopEngineeringSpecificationsService shopEngineeringSpecificationsService;
 	@Autowired
 	private ITOLShopCoordsService shopCoordsService;
+	@Autowired
+	private ITOLMallService mallService;
 
 	public void getShopInfo(ShopInfo shopInfo) {
 		// 商铺信息
@@ -88,6 +88,10 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 			}
 			// 商铺图片
 			shopInfo.setImages(shopImagesService.findAllByCode(shop.getCode()));
+			if (null == shopInfo.getImages() || shopInfo.getImages().isEmpty()) {
+				shopInfo.setMall(mallService.findByCode(shop.getMallCode()));
+			}
+
 			// 工程图
 			shopInfo.setEngineeringImages(shopEngineeringImagesService.findAllByCode(shop.getCode()));
 			// 工程条件
