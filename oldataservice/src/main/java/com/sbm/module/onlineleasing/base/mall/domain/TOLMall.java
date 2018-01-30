@@ -32,6 +32,7 @@ public class TOLMall extends BaseEntity {
 
 	private BigDecimal leasingArea;
 
+	@Column(columnDefinition = "text")
 	private String description;
 
 	private String hdUuid;
@@ -48,6 +49,9 @@ public class TOLMall extends BaseEntity {
 	private String mallNameEng;
 
 	private String locationEng;
+
+	@Column(columnDefinition = "text")
+	private String video;
 
 	public String getCode() {
 		return code;
@@ -151,5 +155,13 @@ public class TOLMall extends BaseEntity {
 
 	public void setLocationEng(String locationEng) {
 		this.locationEng = locationEng;
+	}
+
+	public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video;
 	}
 }

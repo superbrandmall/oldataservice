@@ -69,8 +69,8 @@ public class HdSyncMallServiceImpl extends HdSyncServiceImpl implements ISyncMal
 		po.setGrossFloorArea(obj.getGrossFloorArea());
 		// 租赁面积
 		po.setLeasingArea(obj.getLeasingArea());
-		// 备注
-		po.setDescription(obj.getDescription());
+		// 备注 暂不同步
+		//po.setDescription(obj.getDescription());
 		// 海鼎uuid
 		po.setHdUuid(obj.getHdUuid());
 		// 海鼎编码
