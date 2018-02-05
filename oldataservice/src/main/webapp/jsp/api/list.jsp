@@ -448,7 +448,7 @@
 		///*
 		var url = "${base}/ol/api/shopinfo/getShopFloorInfo";
 		var map = {
-			floorCodes : ["OLFLOOR171212000014", "OLFLOOR171212000015"]
+			floorCodes : ["OLFLOOR180125000021","OLFLOOR180125000022"]
 		};
 		//*/
 		/*

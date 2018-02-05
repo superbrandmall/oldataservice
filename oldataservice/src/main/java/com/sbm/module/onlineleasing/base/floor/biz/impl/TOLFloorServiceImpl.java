@@ -58,6 +58,12 @@ public class TOLFloorServiceImpl extends DaoSupportServiceImpl<TOLFloor> impleme
 	}
 
 	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
+	public List<TOLFloor> findAllByBuildingCodesAndDescription(List<String> buildingCodes, String description) {
+		List<TOLFloor> list = dao.findAllByBuildingCodesAndDescription(buildingCodes, description);
+		return list;
+	}
+
+	@Transactional(value = TransactionConstant.OL, propagation = Propagation.NOT_SUPPORTED, readOnly = true)
 	public TOLFloor findByCode(String code) {
 		String valuer = (String) redisService.get(RedisConstant.PREFIX_FLOOR + code);
 		if (StringUtils.isNotBlank(valuer)) {

@@ -8,6 +8,10 @@ import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopFloorInfo;
 import com.sbm.module.onlineleasing.api.shopinfo.domain.ShopInfo;
 import com.sbm.module.onlineleasing.base.brand.biz.ITOLBrandService;
 import com.sbm.module.onlineleasing.base.brand.domain.TOLBrand;
+import com.sbm.module.onlineleasing.base.building.biz.ITOLBuildingService;
+import com.sbm.module.onlineleasing.base.building.domain.TOLBuilding;
+import com.sbm.module.onlineleasing.base.floor.biz.ITOLFloorService;
+import com.sbm.module.onlineleasing.base.floor.domain.TOLFloor;
 import com.sbm.module.onlineleasing.base.mall.biz.ITOLMallService;
 import com.sbm.module.onlineleasing.base.myfavourite.biz.ITOLMyFavouriteService;
 import com.sbm.module.onlineleasing.base.shop.biz.ITOLShopService;
@@ -23,7 +27,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /*****************************************************************************/
 /* 　　　　　　(C) Super Brand Mail Inc. 2014     　　　                     */
@@ -63,6 +70,11 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 	private ITOLShopCoordsService shopCoordsService;
 	@Autowired
 	private ITOLMallService mallService;
+	@Autowired
+	private ITOLBuildingService buildingService;
+	@Autowired
+	private ITOLFloorService floorService;
+
 
 	public void getShopInfo(ShopInfo shopInfo) {
 		// 商铺信息
@@ -129,7 +141,32 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 	public void getShopFloorInfo(ShopFloorInfo shopFloorInfo) {
 		List<ShopFloorDetail> details = new ArrayList<>();
 		ShopFloorDetail detail;
-		List<TOLShop> shops = shopService.findAllByFloorCodes(shopFloorInfo.getFloorCodes());
+		// TODO 临时解决方案
+		Set<String> set = new HashSet<>();
+		String description = "";
+		// 遍历楼层
+		for (String floorCode : shopFloorInfo.getFloorCodes()) {
+			// 查到该楼层
+			TOLFloor floor = floorService.findByCode(floorCode);
+			// 描述
+			description = floor.getDescription();
+			// 楼层对应建筑
+			TOLBuilding building = buildingService.findByCode(floor.getBuildingCode());
+			// 同mall建筑列表
+			List<TOLBuilding> buildings = buildingService.findAllByMallCode(building.getMallCode());
+			for (TOLBuilding tolBuilding : buildings) {
+				// 加入set
+				set.add(tolBuilding.getCode());
+			}
+		}
+		// 查询所有楼层
+		List<TOLFloor> floors = floorService.findAllByBuildingCodesAndDescription(new ArrayList<>(set), description);
+		// 获取所有楼层code
+		List<String> floorCodes = floors.stream().map(e -> e.getCode()).collect(Collectors.toList());
+		// 查询shop
+		List<TOLShop> shops = shopService.findAllByFloorCodes(floorCodes);
+
+		// List<TOLShop> shops = shopService.findAllByFloorCodes(shopFloorInfo.getFloorCodes());
 		for (TOLShop shop : shops) {
 			detail = new ShopFloorDetail();
 			// shopCode

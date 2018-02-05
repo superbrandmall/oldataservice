@@ -2,6 +2,7 @@ package com.sbm.module.onlineleasing.base.floor.dao.impl;
 
 import java.util.List;
 
+import com.sbm.module.common.base.util.ListUtil;
 import com.sbm.module.common.business.domain.HqlData;
 import com.sbm.module.common.business.domain.Pagination;
 import com.sbm.module.onlineleasing.base.building.domain.TOLBuilding;
@@ -35,11 +36,19 @@ public class TOLFloorDaoImpl extends BaseHibernateDaoImpl<TOLFloor> implements I
 		List<TOLFloor> list = find(hql);
 		return list;
 	}
-	
+
 	public List<TOLFloor> findAllByBuildingCode(String buildingCode) {
 		StringBuffer sb = new StringBuffer("from TOLFloor where 1=1 ");
 		sb.append(" and buildingCode = ?");
 		List<TOLFloor> list = find(sb.toString(), buildingCode);
+		return list;
+	}
+
+	public List<TOLFloor> findAllByBuildingCodesAndDescription(List<String> buildingCodes, String description) {
+		StringBuffer sb = new StringBuffer("from TOLFloor where 1=1 ");
+		sb.append(" and buildingCode in ").append(ListUtil.strList2HQLStr(buildingCodes));
+		sb.append(" and description = ? ");
+		List<TOLFloor> list = find(sb.toString(), description);
 		return list;
 	}
 

@@ -37,6 +37,8 @@ public interface ITOLFloorDao extends IBaseHibernateDao<TOLFloor> {
 
 	List<TOLFloor> findAllByBuildingCode(String buildingCode);
 
+	List<TOLFloor> findAllByBuildingCodesAndDescription(List<String> buildingCodes, String description);
+
 	TOLFloor findByCode(String code);
 
 	TOLFloor findByHdUuid(String hdUuid);
