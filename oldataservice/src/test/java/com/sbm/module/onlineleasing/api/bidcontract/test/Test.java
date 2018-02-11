@@ -41,7 +41,7 @@ public class Test {
 		try {
 			BidInfo obj = new BidInfo();
 			TOLBid bid = new TOLBid();
-			bid.setCode("OLBID171205000005");
+			bid.setCode("OLBID180202000001");
 			obj.setBid(bid);
 			service.createContractPreview(obj);
 		} catch (Exception e) {

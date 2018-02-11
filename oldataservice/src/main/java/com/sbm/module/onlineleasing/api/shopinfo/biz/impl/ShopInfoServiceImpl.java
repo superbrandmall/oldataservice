@@ -13,6 +13,8 @@ import com.sbm.module.onlineleasing.base.building.domain.TOLBuilding;
 import com.sbm.module.onlineleasing.base.floor.biz.ITOLFloorService;
 import com.sbm.module.onlineleasing.base.floor.domain.TOLFloor;
 import com.sbm.module.onlineleasing.base.mall.biz.ITOLMallService;
+import com.sbm.module.onlineleasing.base.merchantbrand.biz.ITOLMerchantBrandService;
+import com.sbm.module.onlineleasing.base.merchantbrand.domain.TOLMerchantBrand;
 import com.sbm.module.onlineleasing.base.myfavourite.biz.ITOLMyFavouriteService;
 import com.sbm.module.onlineleasing.base.shop.biz.ITOLShopService;
 import com.sbm.module.onlineleasing.base.shop.domain.TOLShop;
@@ -21,6 +23,8 @@ import com.sbm.module.onlineleasing.base.shopcoords.domain.TOLShopCoords;
 import com.sbm.module.onlineleasing.base.shopengineeringimages.biz.ITOLShopEngineeringImagesService;
 import com.sbm.module.onlineleasing.base.shopengineeringspecifications.biz.ITOLShopEngineeringSpecificationsService;
 import com.sbm.module.onlineleasing.base.shopimages.biz.ITOLShopImagesService;
+import com.sbm.module.onlineleasing.base.user.biz.ITOLUserService;
+import com.sbm.module.onlineleasing.base.user.domain.TOLUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -74,7 +78,10 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 	private ITOLBuildingService buildingService;
 	@Autowired
 	private ITOLFloorService floorService;
-
+	@Autowired
+	private ITOLUserService userService;
+	@Autowired
+	private ITOLMerchantBrandService merchantBrandService;
 
 	public void getShopInfo(ShopInfo shopInfo) {
 		// 商铺信息
@@ -110,6 +117,13 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 			shopInfo.setEngineeringSpecifications(shopEngineeringSpecificationsService.findAllByCode(shop.getCode()));
 		}
 		shopInfo.setShop(shop);
+
+		// 如果没有绑定品牌，去除敏感信息
+		TOLUser user = userService.findByCode(getUserCode());
+		List<TOLMerchantBrand> merchantBrands = merchantBrandService.findAllByMerchantCode(user.getMerchantCode());
+		if (merchantBrands.isEmpty()) {
+			removeSensitiveInfo(shopInfo.getShop());
+		}
 	}
 
 	/*****************************************************************/

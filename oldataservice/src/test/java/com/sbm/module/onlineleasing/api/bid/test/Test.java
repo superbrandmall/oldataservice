@@ -61,7 +61,7 @@ public class Test {
 
 			service.preSubmit(bidInfo);
 			System.out.println(service.isStandard(bidInfo));
-//			service.submit(bidInfo);
+			service.submit(bidInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

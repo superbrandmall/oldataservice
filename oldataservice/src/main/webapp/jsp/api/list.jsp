@@ -428,15 +428,14 @@
 			}, ]
 		};
 		 */
-		/*
+		///*
 		var url = "${base}/ol/api/shopinfo/get";
 		var map = {
 			myFavourite : {
-				userCode : "OLUSER170718000010",
-				shopCode : "OLSHOP170718000983"
+				shopCode : "OLSHOP180129000195"
 			}
 		};
-		 */
+		// */
 		/*
 		var url = "${base}/ol/api/shopinfo/getBeforeLogin";
 		var map = {
@@ -445,12 +444,12 @@
 			}
 		};
 		 */
-		///*
+		/*
 		var url = "${base}/ol/api/shopinfo/getShopFloorInfo";
 		var map = {
 			floorCodes : ["OLFLOOR180125000021","OLFLOOR180125000022"]
 		};
-		//*/
+		*/
 		/*
 		var url = "${base}/ol/api/userinfo/check/exist/mobile";
 		var map = {

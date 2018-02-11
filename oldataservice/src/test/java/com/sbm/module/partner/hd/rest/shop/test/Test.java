@@ -41,8 +41,10 @@ public class Test {
 	public void test() {
 		try {
 			QueryFilter queryFilter = new QueryFilter();
-			queryFilter.setPage(1);
+			queryFilter.setPage(0);
+			queryFilter.setPageSize(1000);
 			queryFilter.getFilter().put("type", "shoppe");
+			queryFilter.getFilter().put("storeUuid", "8a028c965f243968015f5176ea26003b");
 
 			HdResult<HdResultBody<HdShop>> result = service.query(queryFilter);
 
