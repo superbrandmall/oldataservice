@@ -1,5 +1,6 @@
 package com.sbm.module.partner.hd.job.baseinfo;
 
+import com.sbm.module.common.base.constant.CommonConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -35,12 +36,13 @@ public class HdBaseInfoJob extends BaseJob {
 	private ISyncFloorService syncFloorService;
 
 	protected void execute() {
-		// 同步项目
-		syncMallService.sync();
-		// 同步建筑物
-		syncBuildingService.sync();
-		// 同步楼层
-		syncFloorService.sync();
+		CommonConstant.FRAMEWORK.info("项目，建筑物，楼层使用新版同步");
+//		// 同步项目
+//		syncMallService.sync();
+//		// 同步建筑物
+//		syncBuildingService.sync();
+//		// 同步楼层
+//		syncFloorService.sync();
 	}
 
 }

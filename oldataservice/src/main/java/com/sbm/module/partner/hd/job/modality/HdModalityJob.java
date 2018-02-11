@@ -1,5 +1,6 @@
 package com.sbm.module.partner.hd.job.modality;
 
+import com.sbm.module.common.base.constant.CommonConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -25,8 +26,9 @@ public class HdModalityJob extends BaseJob {
 	private ISyncModalityService service;
 
 	protected void execute() {
-		// 同步业态
-		service.sync();
+		CommonConstant.FRAMEWORK.info("业态使用新版同步");
+//		// 同步业态
+//		service.sync();
 	}
 
 }
