@@ -290,7 +290,7 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 		// 最后一份合同到期日
 		po.setContractExpireDate(obj.getContract_expire_date());
 		// 最低可出价租金
-		po.setDeadRent(obj.getDear_rent());
+		po.setDeadRent(obj.getDead_rent());
 		// 最低可出价扣率
 		po.setFloatingRentalRate(obj.getFloating_rental_rate());
 		// 最后一份合同的品牌

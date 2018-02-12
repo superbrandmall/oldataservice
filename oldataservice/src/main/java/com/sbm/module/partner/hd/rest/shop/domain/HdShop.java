@@ -1,21 +1,22 @@
 package com.sbm.module.partner.hd.rest.shop.domain;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-
 import com.sbm.module.partner.hd.rest.base.domain.HdMediaFile;
 import com.sbm.module.partner.hd.rest.base.domain.HdUCN;
 import com.sbm.module.partner.hd.view.biztype.domain.BizType;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
 /*****************************************************************************/
+
 /**
  * Project Name:oldataservice<br/>
  * Package Name:com.sbm.module.partner.hd.rest.brand.domain<br/>
  * File Name:HdBrand.java<br/>
- * 
+ * <p>
  * 作成日 ：2017-11-7 下午1:55:02 <br/>
- * 
+ *
  * @author ：junkai.zhang
  */
 public class HdShop {
@@ -42,7 +43,7 @@ public class HdShop {
 
 	private List<HdUCN> currentBrand;
 
-	private BigDecimal dear_rent;
+	private BigDecimal dead_rent;
 
 	private BigDecimal floating_rental_rate;
 
@@ -141,12 +142,8 @@ public class HdShop {
 		return currentBrand;
 	}
 
-	public BigDecimal getDear_rent() {
-		return dear_rent;
-	}
-
-	public void setDear_rent(BigDecimal dear_rent) {
-		this.dear_rent = dear_rent;
+	public BigDecimal getDead_rent() {
+		return dead_rent;
 	}
 
 	public BigDecimal getFloating_rental_rate() {
