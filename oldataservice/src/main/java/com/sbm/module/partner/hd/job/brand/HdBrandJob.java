@@ -1,5 +1,6 @@
 package com.sbm.module.partner.hd.job.brand;
 
+import com.sbm.module.common.base.constant.CommonConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -25,8 +26,9 @@ public class HdBrandJob extends BaseJob {
 	private ISyncBrandService syncBrandService;
 
 	protected void execute() {
+		CommonConstant.FRAMEWORK.info("品牌使用新版同步");
 		// 同步商户
-		syncBrandService.sync();
+//		syncBrandService.sync();
 	}
 
 }

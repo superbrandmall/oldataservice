@@ -37,9 +37,21 @@ public class Test {
 		// test6();
 		// test7();
 		// test8();
-		test9();
+		// test9();
+		test10();
 	}
 
+	private void test10() {
+		Integer t = 0;
+
+		Integer page = 10 ;
+
+		do {
+			System.out.println(t);
+			t ++;
+		} while (t <= page);
+
+	}
 
 	private void test9() {
 		List<HdContract> list = new ArrayList<>();
