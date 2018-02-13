@@ -86,6 +86,14 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 	public void getShopInfo(ShopInfo shopInfo) {
 		// 商铺信息
 		setShop(shopInfo);
+
+		// 如果没有绑定品牌，去除敏感信息
+		TOLUser user = userService.findByCode(getUserCode());
+		List<TOLMerchantBrand> merchantBrands = merchantBrandService.findAllByMerchantCode(user.getMerchantCode());
+		if (merchantBrands.isEmpty()) {
+			removeSensitiveInfo(shopInfo.getShop());
+		}
+
 		// 是否关注
 		shopInfo.setMyFavourite(service.findByUserCodeAndShopCode(shopInfo.getMyFavourite()));
 	}
@@ -118,12 +126,6 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 		}
 		shopInfo.setShop(shop);
 
-		// 如果没有绑定品牌，去除敏感信息
-		TOLUser user = userService.findByCode(getUserCode());
-		List<TOLMerchantBrand> merchantBrands = merchantBrandService.findAllByMerchantCode(user.getMerchantCode());
-		if (merchantBrands.isEmpty()) {
-			removeSensitiveInfo(shopInfo.getShop());
-		}
 	}
 
 	/*****************************************************************/
