@@ -44,7 +44,8 @@
 		var url = "${base}/ol/api/login/login";
 		var map = { 
 			//username : "admin@superbrandmall.com",
-			username : "demo@superbrandmall.com",
+			//username : "demo@superbrandmall.com",
+			username : "biyan.huang@superbrandmall.com",
 			password : "12345678"  
 		};
 		$.ajax({
@@ -432,7 +433,7 @@
 		var url = "${base}/ol/api/shopinfo/get";
 		var map = {
 			myFavourite : {
-				shopCode : "OLSHOP180129000195"
+				shopCode : "OLSHOP180129000194"
 			}
 		};
 		// */

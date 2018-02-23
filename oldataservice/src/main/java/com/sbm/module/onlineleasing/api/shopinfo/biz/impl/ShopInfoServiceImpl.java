@@ -144,7 +144,7 @@ public class ShopInfoServiceImpl extends BusinessServiceImpl implements IShopInf
 	 * @param shop
 	 */
 	private void removeSensitiveInfo(TOLShop shop) {
-		if (null != null) {
+		if (null != shop) {
 			shop.setContractExpireDate(null);
 			shop.setDeadRent(null);
 			shop.setFloatingRentalRate(null);
