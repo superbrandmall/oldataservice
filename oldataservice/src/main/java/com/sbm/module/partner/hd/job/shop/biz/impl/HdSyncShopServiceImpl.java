@@ -172,7 +172,7 @@ public class HdSyncShopServiceImpl extends HdSyncServiceImpl implements ISyncSho
 					}
 				}
 
-				// 工程条件
+				// 工程条件 123
 				List<TOLShopEngineeringSpecifications> pos = shopEngineeringSpecificationsService.findAllByCode(po.getCode());
 				List<TOLShopEngineeringSpecifications> vos = getSpecifications(obj, po);
 				if (pos.size() <= vos.size()) {
