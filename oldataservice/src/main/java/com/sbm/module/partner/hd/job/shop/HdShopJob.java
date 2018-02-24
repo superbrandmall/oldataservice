@@ -1,5 +1,6 @@
 package com.sbm.module.partner.hd.job.shop;
 
+import com.sbm.module.common.base.constant.CommonConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -25,8 +26,9 @@ public class HdShopJob extends BaseJob {
 	private ISyncShopService syncShopService;
 
 	protected void execute() {
+		CommonConstant.FRAMEWORK.info("商铺使用新版同步");
 		// 同步商铺
-		syncShopService.sync();
+//		syncShopService.sync();
 	}
 
 }
