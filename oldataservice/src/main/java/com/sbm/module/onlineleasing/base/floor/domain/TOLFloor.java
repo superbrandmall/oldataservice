@@ -18,7 +18,7 @@ import com.sbm.module.common.business.domain.BaseEntity;
  * @author ：junkai.zhang
  */
 @Entity(name = "TOLFloor")
-@Table(name = "T_OL_FLOOR")
+@Table(name = "T_OL_FLOOR_OLD")
 public class TOLFloor extends BaseEntity {
 
 	private String code;

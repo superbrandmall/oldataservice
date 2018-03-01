@@ -94,7 +94,7 @@
 
 		var url = "http://10.130.12.15:8750/onlineleasing-file/api/download/pre";
 		var map = {
-			uri : "http://10.130.12.22:8280/HDMediaService-Web/fileget?fileID=5b3ea5be715bb575af0ac75ff027245a35d22da04f99bcec2576d7b18bda192c66994f119b191b45&fileName=5b3ea5be715bb575af0ac75ff027245a35d22da04f99bcec2576d7b18bda192c66994f119b191b45&size=0,0"
+			uri : "http://10.130.12.22:8280/HDMediaService-Web/fileget?fileID=282c13df956616681e2992329068ea21e14a1b3e09d45873b74e53638704e35c579999acf5b13afc&fileName=4ef7f9837be5326509b14ca1bc868be3a119432727ca794b&size=0,0"
 		};
 		
 		$.ajax({
@@ -165,7 +165,7 @@
 	<br />
 	<span>下载测试：</span>
 	<object
-		data="http://10.130.12.15:8750/onlineleasing-file/api/download/file?key=pdf_eb1a9963-80e2-459f-a4e5-5660d797166a"
+		data="http://10.130.12.15:8750/onlineleasing-file/api/download/file?key=txt_fe47170e-5a95-423a-9734-39b1a7771164"
 		type="application/pdf" width="100%" height="800px"> </object>
 
 
