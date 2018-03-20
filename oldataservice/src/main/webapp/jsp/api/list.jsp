@@ -44,8 +44,8 @@
 		var url = "${base}/ol/api/login/login";
 		var map = { 
 			//username : "admin@superbrandmall.com",
-			//username : "demo@superbrandmall.com",
-			username : "biyan.huang@superbrandmall.com",
+			username : "demo@superbrandmall.com",
+			//username : "biyan.huang@superbrandmall.com",
 			password : "12345678"  
 		};
 		$.ajax({
